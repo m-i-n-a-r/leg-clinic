@@ -1,13 +1,14 @@
 package it.leg.model;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.LinkedList;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class TipologiaEsame {
@@ -20,18 +21,17 @@ public class TipologiaEsame {
 	private String descrizione;
 	@Column(nullable = false)
 	private Float costo;
-//	@Column(nullable = false)
-//	private Map<String, String> condizioni;
-//	@Column(nullable = false)
-//	private Map<String, String> risultati;
+	@Column(nullable = false)
+	private List<Precondizioni> precondizioni;
+	@OneToMany
+	private List<RisultatoEsame> risultatiEsame;
 
 
 	public TipologiaEsame(String nome, String descrizione, Float costo) {
 		this.nome = nome;
 		this.descrizione = descrizione;
 		this.costo = costo;
-//		condizioni = new HashMap<>();
-//		risultati = new HashMap<>();
+		risultatiEsame = new LinkedList<>();
 	}
 
 	// Getters e Setters
@@ -60,22 +60,7 @@ public class TipologiaEsame {
 	public void setCosto(Float costo) {
 		this.costo = costo;
 	}
-//	public Map<String, String> getCondizioni() {
-//		return condizioni;
-//	}
-//	public void setCondizioni(Map<String, String> condizioni) {
-//		this.condizioni = condizioni;
-//	}
-//	public Map<String, String> getRisultati() {
-//		return risultati;
-//	}
-//	public void setRisultati(Map<String, String> risultati) {
-//		this.risultati = risultati;
-//	}
-//
-//	// Altri metodi necessari
-//
-//	public void aggiungiCondizione(String condizione, String periodo) {
-//		this.condizioni.put(condizione, periodo);
-//	}
+
+	// Altri metodi necessari
+
 }

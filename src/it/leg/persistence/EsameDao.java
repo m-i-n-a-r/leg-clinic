@@ -4,7 +4,7 @@ import java.util.List;
 
 import it.leg.model.Esame;
 
-
+//prova
 public interface EsameDao {
 	public void save(Esame esame);
 	public void delete(Esame esame); 

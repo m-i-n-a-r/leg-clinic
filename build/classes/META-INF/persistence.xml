@@ -4,15 +4,17 @@
 	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
 	<persistence-unit name="legClinic"
 		transaction-type="RESOURCE_LOCAL">
-		<class>it.leg.model.Esame</class>
-		<class>it.leg.model.Medico</class>
-		<class>it.leg.model.TipologiaEsame</class>
-		<class>it.leg.model.Paziente</class>
-		<class>it.leg.model.Amministrazione</class>
+		<class>it.leg.model.Examination</class>
+		<class>it.leg.model.Doctor</class>
+		<class>it.leg.model.Condition</class>
+		<class>it.leg.model.ExaminationType</class>
+		<class>it.leg.model.ExaminationResult</class>
+		<class>it.leg.model.Patient</class>
+		<class>it.leg.model.Admin</class>
 		<properties>
 			<property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver" />
 			<property name="javax.persistence.jdbc.user" value="postgres" />
-			<property name="javax.persistence.jdbc.password" value="postgres" />
+			<property name="javax.persistence.jdbc.password" value="18essabbracciamo" />
 			<property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost/legClinic" />
 
 			<!-- Hibernate properties -->

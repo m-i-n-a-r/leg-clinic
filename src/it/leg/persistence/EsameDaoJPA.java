@@ -8,7 +8,7 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
 
-import it.leg.model.Esame;
+import it.leg.model.Examination;
 
 public class EsameDaoJPA implements EsameDao {
 	// Creo l'entity manager
@@ -16,7 +16,7 @@ public class EsameDaoJPA implements EsameDao {
 	EntityManager em = emf.createEntityManager();
 	EntityTransaction tx = em.getTransaction();
 	
-	public void save(Esame esame) {	
+	public void save(Examination esame) {	
 		tx.begin();
 		
 		em.persist(esame);
@@ -24,7 +24,7 @@ public class EsameDaoJPA implements EsameDao {
 		tx.commit();
 	}
 	
-	public void delete(Esame esame) {
+	public void delete(Examination esame) {
 		tx.begin();
 		
 		em.remove(esame);
@@ -32,7 +32,7 @@ public class EsameDaoJPA implements EsameDao {
 		tx.commit();
 	}
 	
-	public void update(Esame esame) {
+	public void update(Examination esame) {
 		tx.begin();
 		
 		em.merge(esame);
@@ -40,20 +40,20 @@ public class EsameDaoJPA implements EsameDao {
 		tx.commit();
 	}
 	
-	public Esame findByPrimaryKey(Long id) {
+	public Examination findByPrimaryKey(Long id) {
 		tx.begin();
 		
-		Esame esame = em.find(Esame.class, id);
+		Examination esame = em.find(Examination.class, id);
 		
 		tx.commit();
 		
 		return esame;
 	}
 	
-	public List<Esame> findAll() {
+	public List<Examination> findAll() {
 		
 		Query query = em.createQuery("SELECT e FROM Order e");
-	    return (List<Esame>) query.getResultList();	
+	    return (List<Examination>) query.getResultList();	
 	}
 	
 	

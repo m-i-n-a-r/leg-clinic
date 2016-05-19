@@ -2,13 +2,13 @@ package it.leg.persistence;
 
 import java.util.List;
 
-import it.leg.model.Paziente;;
+import it.leg.model.Patient;;
 
 
 public interface PazienteDao {
-	public void save(Paziente paziente);
-	public void delete(Paziente paziente); 
-	public void update(Paziente paziente);
-	Paziente findByPrimaryKey(Long id);
- 	List<Paziente> findAll();
+	public void save(Patient paziente);
+	public void delete(Patient paziente); 
+	public void update(Patient paziente);
+	Patient findByPrimaryKey(Long id);
+ 	List<Patient> findAll();
 }

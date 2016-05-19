@@ -8,7 +8,7 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
 
-import it.leg.model.Medico;
+import it.leg.model.Doctor;
 
 public class MedicoDaoJPA implements MedicoDao {
 	// Creo l'entity manager
@@ -16,7 +16,7 @@ public class MedicoDaoJPA implements MedicoDao {
 	EntityManager em = emf.createEntityManager();
 	EntityTransaction tx = em.getTransaction();
 	
-	public void save(Medico medico) {	
+	public void save(Doctor medico) {	
 		tx.begin();
 		
 		em.persist(medico);
@@ -24,7 +24,7 @@ public class MedicoDaoJPA implements MedicoDao {
 		tx.commit();
 	}
 	
-	public void delete(Medico medico) {
+	public void delete(Doctor medico) {
 		tx.begin();
 		
 		em.remove(medico);
@@ -32,7 +32,7 @@ public class MedicoDaoJPA implements MedicoDao {
 		tx.commit();
 	}
 	
-	public void update(Medico medico) {
+	public void update(Doctor medico) {
 		tx.begin();
 		
 		em.merge(medico);
@@ -40,20 +40,20 @@ public class MedicoDaoJPA implements MedicoDao {
 		tx.commit();
 	}
 	
-	public Medico findByPrimaryKey(Long id) {
+	public Doctor findByPrimaryKey(Long id) {
 		tx.begin();
 		
-		Medico medico = em.find(Medico.class, id);
+		Doctor medico = em.find(Doctor.class, id);
 		
 		tx.commit();
 		
 		return medico;
 	}
 	
-	public List<Medico> findAll() {
+	public List<Doctor> findAll() {
 		
 		Query query = em.createQuery("SELECT e FROM Order e");
-	    return (List<Medico>) query.getResultList();	
+	    return (List<Doctor>) query.getResultList();	
 	}
 	
 	

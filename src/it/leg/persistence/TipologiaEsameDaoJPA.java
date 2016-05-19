@@ -8,7 +8,7 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
 
-import it.leg.model.TipologiaEsame;
+import it.leg.model.ExaminationType;
 
 public class TipologiaEsameDaoJPA implements TipologiaEsameDao {
 	// Creo l'entity manager
@@ -16,7 +16,7 @@ public class TipologiaEsameDaoJPA implements TipologiaEsameDao {
 	EntityManager em = emf.createEntityManager();
 	EntityTransaction tx = em.getTransaction();
 	
-	public void save(TipologiaEsame tipologiaEsame) {	
+	public void save(ExaminationType tipologiaEsame) {	
 		tx.begin();
 		
 		em.persist(tipologiaEsame);
@@ -24,7 +24,7 @@ public class TipologiaEsameDaoJPA implements TipologiaEsameDao {
 		tx.commit();
 	}
 	
-	public void delete(TipologiaEsame tipologiaEsame) {
+	public void delete(ExaminationType tipologiaEsame) {
 		tx.begin();
 		
 		em.remove(tipologiaEsame);
@@ -32,7 +32,7 @@ public class TipologiaEsameDaoJPA implements TipologiaEsameDao {
 		tx.commit();
 	}
 	
-	public void update(TipologiaEsame tipologiaEsame) {
+	public void update(ExaminationType tipologiaEsame) {
 		tx.begin();
 		
 		em.merge(tipologiaEsame);
@@ -40,20 +40,20 @@ public class TipologiaEsameDaoJPA implements TipologiaEsameDao {
 		tx.commit();
 	}
 	
-	public TipologiaEsame findByPrimaryKey(Long id) {
+	public ExaminationType findByPrimaryKey(Long id) {
 		tx.begin();
 		
-		TipologiaEsame tipologiaEsame = em.find(TipologiaEsame.class, id);
+		ExaminationType tipologiaEsame = em.find(ExaminationType.class, id);
 		
 		tx.commit();
 		
 		return tipologiaEsame;
 	}
 	
-	public List<TipologiaEsame> findAll() {
+	public List<ExaminationType> findAll() {
 		
 		Query query = em.createQuery("SELECT e FROM Order e");
-	    return (List<TipologiaEsame>) query.getResultList();	
+	    return (List<ExaminationType>) query.getResultList();	
 	}
 	
 	

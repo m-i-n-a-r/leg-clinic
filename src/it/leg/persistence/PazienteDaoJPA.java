@@ -8,7 +8,7 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
 
-import it.leg.model.Paziente;
+import it.leg.model.Patient;
 
 public class PazienteDaoJPA implements PazienteDao {
 	// Creo l'entity manager
@@ -16,7 +16,7 @@ public class PazienteDaoJPA implements PazienteDao {
 	EntityManager em = emf.createEntityManager();
 	EntityTransaction tx = em.getTransaction();
 	
-	public void save(Paziente paziente) {	
+	public void save(Patient paziente) {	
 		tx.begin();
 		
 		em.persist(paziente);
@@ -24,7 +24,7 @@ public class PazienteDaoJPA implements PazienteDao {
 		tx.commit();
 	}
 	
-	public void delete(Paziente paziente) {
+	public void delete(Patient paziente) {
 		tx.begin();
 		
 		em.remove(paziente);
@@ -32,7 +32,7 @@ public class PazienteDaoJPA implements PazienteDao {
 		tx.commit();
 	}
 	
-	public void update(Paziente paziente) {
+	public void update(Patient paziente) {
 		tx.begin();
 		
 		em.merge(paziente);
@@ -40,20 +40,20 @@ public class PazienteDaoJPA implements PazienteDao {
 		tx.commit();
 	}
 	
-	public Paziente findByPrimaryKey(Long id) {
+	public Patient findByPrimaryKey(Long id) {
 		tx.begin();
 		
-		Paziente paziente = em.find(Paziente.class, id);
+		Patient paziente = em.find(Patient.class, id);
 		
 		tx.commit();
 		
 		return paziente;
 	}
 	
-	public List<Paziente> findAll() {
+	public List<Patient> findAll() {
 		
 		Query query = em.createQuery("SELECT e FROM Order e");
-	    return (List<Paziente>) query.getResultList();	
+	    return (List<Patient>) query.getResultList();	
 	}
 	
 	

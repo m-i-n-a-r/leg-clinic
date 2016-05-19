@@ -10,14 +10,14 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 
-public class MainDiProva {
+public class TemporaryMain {
 
 	public static void main(String[] args) throws ParseException {
 		// Creo l'entity manager
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("legClinic");
 		EntityManager em = emf.createEntityManager();
 
-//		 Creo le date che mi serviranno
+		// Creo le date che mi serviranno
 		String prenotazioneString = "23/02/1995 at 13:03:12";
 		DateFormat df1 = new SimpleDateFormat("dd/MM/yyyy 'at' HH:mm:ss"); 
 				
@@ -34,16 +34,20 @@ public class MainDiProva {
 		Date visita1 = new java.sql.Date(secs2);	
 		
 		// Creo gli oggetti
-		Medico medico = new Medico("Pancrazio", "Cingoletti", "culologia");
-		Paziente paziente = new Paziente("Giancula", "Gonte", "glucacont@gg.it", "bamboo");
-		TipologiaEsame tipologia = new TipologiaEsame("culo", "culoh", 3.5F);
-		Esame esame = new Esame(tipologia, paziente, medico);
+		Doctor medico = new Doctor("Pancrazio", "Cingoletti", "nientologia");
+		Patient paziente = new Patient("Gianluca", "Gonte", "glucacont@gg.it", "bamboo");
+		ExaminationType tipologia = new ExaminationType("occhio", "attenzione", 3.5F);
+		Examination esame = new Examination(tipologia, paziente, medico);
+		ExaminationResult risultato = new ExaminationResult("risultato", "fico");
+		Condition condizione = new Condition("pla", "123");
 		
 		// Collego i vari oggetti come richiesto
-		paziente.aggiungiEsame(esame);
-		medico.aggiungiEsame(esame);
-		esame.setDataPrenotazione(prenotazione1);
-		esame.setDataSvolgimento(visita1);
+		paziente.addExamination(esame);
+		medico.addExamination(esame);
+		tipologia.AddCondition(condizione);
+		tipologia.AddExaminationResult(risultato);
+		esame.setExaminationDate(prenotazione1);
+		esame.setReservationDate(visita1);
 		
 		// Uso l'entity manager per ottenere la persistenza e creare le tabelle nel database
 		EntityTransaction tx = em.getTransaction();
@@ -51,6 +55,8 @@ public class MainDiProva {
 		
 		em.persist(medico);
 		em.persist(paziente);
+		em.persist(condizione);
+		em.persist(risultato);
 		em.persist(tipologia);
 		em.persist(esame);
 

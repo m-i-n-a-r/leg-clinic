@@ -13,44 +13,44 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 
 @Entity
-public class Paziente {
+public class Patient {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	@Column(nullable = false)
-	private String nome; 
+	private String name; 
 	@Column(nullable = false)
-	private String cognome;
+	private String surname;
 	@Column(nullable = false)
 	private String email;
 	@Column(nullable = false)
 	private String password;
-	@OneToMany (fetch = FetchType.LAZY)
-	@JoinColumn(name = "paziente_id") 
-	private List<Esame> esami;
+	@OneToMany(fetch = FetchType.LAZY)
+	@JoinColumn(name = "patient_id") 
+	private List<Examination> examinations;
 	
-	public Paziente(String nome, String cognome, String email, String password) {
-		this.nome = nome;
-		this.cognome = cognome;
+	public Patient(String name, String surname, String email, String password) {
+		this.name = name;
+		this.surname = surname;
 		this.email = email;
 		this.password = password;
-		this.esami = new LinkedList<Esame>();
+		this.examinations = new LinkedList<Examination>();
 	}
 	
 	// Getters e Setters
 	
-	public String getNome() {
-		return nome;
+	public String getName() {
+		return name;
 	}
-	public void setNome(String nome) {
-		this.nome = nome;
+	public void setName(String name) {
+		this.name = name;
 	}
-	public String getCognome() {
-		return cognome;
+	public String getSurname() {
+		return surname;
 	}
-	public void setCognome(String cognome) {
-		this.cognome = cognome;
+	public void setSurname(String surname) {
+		this.surname = surname;
 	}
 	public String getEmail() {
 		return email;
@@ -64,16 +64,16 @@ public class Paziente {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public List<Esame> getEsami() {
-		return esami;
+	public List<Examination> getExaminations() {
+		return examinations;
 	}
-	public void setEsami(List<Esame> esami) {
-		this.esami = esami;
+	public void setExaminations(List<Examination> examinations) {
+		this.examinations = examinations;
 	}
 	
-	// Altri metodi necessari
+	// Useful methods
 	
-	public void aggiungiEsame(Esame esame) {
-		this.esami.add(esame);
+	public void addExamination(Examination examination) {
+		this.examinations.add(examination);
 	}
 }

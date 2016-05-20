@@ -17,15 +17,20 @@ public class ExaminationType {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long code;
+	
 	@Column(nullable = false)
 	private String name;
+	
 	@Column(nullable = false)
 	private String description;
+	
 	@Column(nullable = false)
 	private Float cost;
+	
 	@OneToMany(fetch = FetchType.LAZY)
 	@JoinColumn(name ="condition_id")
 	private List<Condition> preconditions;
+	
 	@OneToMany(fetch = FetchType.LAZY)
 	@JoinColumn(name = "type_id")
 	private List<ExaminationResult> examResults;
@@ -44,24 +49,31 @@ public class ExaminationType {
 	public String getName() {
 		return name;
 	}
+	
 	public void setName(String name) {
 		this.name = name;
 	}
+	
 	public Long getCode() {
 		return code;
 	}
+	
 	public void setCode(Long code) {
 		this.code = code;
 	}
+	
 	public String getDescription() {
 		return description;
 	}
+	
 	public void setDescription(String description) {
 		this.description = description;
 	}
+	
 	public Float getCost() {
 		return cost;
 	}
+	
 	public void setCost(Float cost) {
 		this.cost = cost;
 	}
@@ -71,6 +83,7 @@ public class ExaminationType {
 	public void AddCondition(Condition condition) {
 		this.preconditions.add(condition);
 	}
+	
 	public void AddExaminationResult(ExaminationResult result) {
 		this.examResults.add(result);
 	}

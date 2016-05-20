@@ -14,15 +14,20 @@ import javax.persistence.OneToMany;
 
 @Entity
 public class Doctor {
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
+	
 	@Column(nullable = false)
 	private String name;
+	
 	@Column(nullable = false)
 	private String surname;
+	
 	@Column(nullable = false)
 	private String specialization;
+	
 	@OneToMany (fetch = FetchType.LAZY)
 	@JoinColumn(name = "doctor_id") 
 	private List<Examination> examinations;
@@ -39,24 +44,31 @@ public class Doctor {
 	public String getName() {
 		return name;
 	}
+	
 	public void setName(String name) {
 		this.name = name;
 	}
+	
 	public String getSurname() {
 		return surname;
 	}
+	
 	public void setSurname(String surname) {
 		this.surname = surname;
 	}
+	
 	public String getSpecialization() {
 		return specialization;
 	}
+	
 	public void setSpecialization(String specialization) {
 		this.specialization = specialization;
 	}
+	
 	public List<Examination> getExaminations() {
 		return examinations;
 	}
+	
 	public void setExaminations(List<Examination> examinations) {
 		this.examinations = examinations;
 	}
@@ -66,6 +78,5 @@ public class Doctor {
 	public void addExamination(Examination examination) {
 		this.examinations.add(examination);
 	}
-
 
 }

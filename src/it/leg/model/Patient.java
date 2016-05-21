@@ -43,6 +43,10 @@ public class Patient {
 		this.examinations = new LinkedList<Examination>();
 	}
 	
+	public Patient() {
+		this.examinations = new LinkedList<Examination>();
+	}
+	
 	// Getters e Setters
 	
 	public String getName() {

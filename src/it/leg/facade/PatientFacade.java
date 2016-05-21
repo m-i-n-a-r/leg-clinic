@@ -1,4 +1,4 @@
-package it.leg.persistence;
+package it.leg.facade;
 
 import java.util.List;
 
@@ -10,32 +10,31 @@ import javax.persistence.Query;
 
 import it.leg.model.Patient;
 
-public class PazienteDaoJPA implements PazienteDao {
-	// Creo l'entity manager
-	EntityManagerFactory emf = Persistence.createEntityManagerFactory("ecommerce");
+public class PatientFacade {
+	EntityManagerFactory emf = Persistence.createEntityManagerFactory("legClinic");
 	EntityManager em = emf.createEntityManager();
 	EntityTransaction tx = em.getTransaction();
 	
-	public void save(Patient paziente) {	
+	public Patient createPatient(String name, String surname, String email, String password) {	
+		tx.begin();
+		Patient patient= new Patient(name,surname,email,password);
+		em.persist(patient);
+		tx.commit();
+		return patient;
+	}
+	
+	public void delete(Patient patient) {
 		tx.begin();
 		
-		em.persist(paziente);
+		em.remove(patient);
 		
 		tx.commit();
 	}
 	
-	public void delete(Patient paziente) {
+	public void update(Patient patient) {
 		tx.begin();
 		
-		em.remove(paziente);
-		
-		tx.commit();
-	}
-	
-	public void update(Patient paziente) {
-		tx.begin();
-		
-		em.merge(paziente);
+		em.merge(patient);
 		
 		tx.commit();
 	}
@@ -43,18 +42,17 @@ public class PazienteDaoJPA implements PazienteDao {
 	public Patient findByPrimaryKey(Long id) {
 		tx.begin();
 		
-		Patient paziente = em.find(Patient.class, id);
+		Patient patient = em.find(Patient.class, id);
 		
 		tx.commit();
 		
-		return paziente;
+		return patient ;
 	}
 	
 	public List<Patient> findAll() {
 		
-		Query query = em.createQuery("SELECT e FROM Order e");
+		Query query = em.createQuery("SELECT p FROM Patient p");
 	    return (List<Patient>) query.getResultList();	
 	}
-	
 	
 }

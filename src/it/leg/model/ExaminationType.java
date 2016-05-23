@@ -89,6 +89,6 @@ public class ExaminationType {
 	}
 	
 	public String toString() {
-		return this.name + ": " + this.description;
+		return "Nome: " + this.name + "Descrizione: " + this.description;
 	}
 }

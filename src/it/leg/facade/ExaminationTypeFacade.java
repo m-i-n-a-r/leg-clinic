@@ -15,9 +15,13 @@ public class ExaminationTypeFacade {
 	EntityManager em = emf.createEntityManager();
 	EntityTransaction tx = em.getTransaction();
 	
+	public ExaminationTypeFacade() {
+		
+	}
+	
 	public ExaminationType createExaminationType(String name, String description, Float cost) {	
 		tx.begin();
-		ExaminationType type= new ExaminationType(name,description,cost);
+		ExaminationType type = new ExaminationType(name, description, cost);
 		em.persist(type);
 		tx.commit();
 		return type;
@@ -42,7 +46,7 @@ public class ExaminationTypeFacade {
 	public ExaminationType findByPrimaryKey(Long id) {
 		tx.begin();
 		
-		ExaminationType type= em.find(ExaminationType.class, id);
+		ExaminationType type = em.find(ExaminationType.class, id);
 		
 		tx.commit();
 		
@@ -51,7 +55,7 @@ public class ExaminationTypeFacade {
 	
 	public List<ExaminationType> findAll() {
 		
-		Query query = em.createQuery("SELECT e FROM tipologiaesame e");
+		Query query = em.createQuery("SELECT e FROM ExaminationType e");
 	    return (List<ExaminationType>) query.getResultList();	
 	}
 

@@ -87,4 +87,8 @@ public class ExaminationType {
 	public void AddExaminationResult(ExaminationResult result) {
 		this.examResults.add(result);
 	}
+	
+	public String toString() {
+		return this.name + ": " + this.description;
+	}
 }

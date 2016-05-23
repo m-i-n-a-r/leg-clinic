@@ -43,11 +43,11 @@ public class LoginController extends HttpServlet {
 
 			// everything is ok
 			
-			Patient patient = new Patient();
-			patient.setEmail(email);
-			patient.setPassword(password);
+			Patient currentPatient = new Patient();
+			currentPatient.setEmail(email);
+			currentPatient.setPassword(password);
 
-			request.setAttribute("patient", patient);
+			request.setAttribute("patient", currentPatient);
 			nextPage = "/personalArea.jsp";
 		}
 		

@@ -4,19 +4,19 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="stylesheet" href="assets/css/main.css" />
-<title>Homepage - LegClinic</title>
+<title>Login - LegClinic</title>
 </head>
 <body>
 	<h1 align="center">BENVENUTO!</h1>
 	<div id="main">
 	<header class="major container 75%">
-		<form action="loginController" method="get">
+		<form action="loginController" method="post">
 			
-			Email: <input type="text" name="email" class="form-control"
+			Email: <input type="email" name="email" class="form-control"
 				value="${param['email']}"><br>
 				<font color="red"> ${emailError} </font> <br>
 				
-			Passoword: <input type="text" name="password" class="form-control"
+			Password: <input type="password" name="password" class="form-control"
 				value="${param['password']}"><br>
 				<font color="red"> ${passwordError} </font> <br>
 				

@@ -21,10 +21,10 @@ public class ExaminationTypeFacade {
 	
 	public ExaminationType createExaminationType(String name, String description, Float cost) {	
 		tx.begin();
-		ExaminationType type = new ExaminationType(name, description, cost);
-		em.persist(type);
+		ExaminationType examinationType = new ExaminationType(name, description, cost);
+		em.persist(examinationType);
 		tx.commit();
-		return type;
+		return examinationType;
 	}
 	
 	public void delete(ExaminationType type) {

@@ -10,8 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import it.leg.controller.action.ActionInsertType;
-import it.leg.controller.helper.HelperTypeExamination;
+import it.leg.controller.action.InsertTypeAction;
+import it.leg.controller.helper.ExaminationTypeHelper;
 
 
 
@@ -19,16 +19,18 @@ import it.leg.controller.helper.HelperTypeExamination;
 public class ExaminationTypeController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    
 	
-	
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		HelperTypeExamination helper = new HelperTypeExamination();
-		ActionInsertType action = new ActionInsertType();
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) 
+			throws ServletException, IOException {
+		
+		ExaminationTypeHelper helper = new ExaminationTypeHelper();
+		InsertTypeAction action = new InsertTypeAction();
 		String nextPage = "/newExaminationType.jsp";
-		if (helper.isValid(request)) {
-			nextPage = action.manage(request);
+		
+		if (helper.validate(request)) {
+			nextPage = action.execute(request);
 	}
+		
 		ServletContext servletContext = getServletContext();
 		RequestDispatcher rd = servletContext.getRequestDispatcher(nextPage);
 		rd.forward(request, response);

@@ -1,0 +1,80 @@
+LEG Team
+Edoardo Annesi - 474400, Gianluca Conti - 473989, Letizia Felletti - 474977
+
+--------------------------------------------------------------------
+
+-----Caso d'uso UC1: consulta offerta-----
+Attore primario: utente non registrato
+Scenario principale di successo:
+- L'utente consulta l'elenco delle tipologie di esame
+- L'utente sceglie una tipologia di esame e ne richiede i dettagli 
+- Il sistema mostra i dettagli della tipologia di esame scelta dall'utente
+- L'utente ripete i passi precedenti un numero indefinito di volte
+
+---------------------------------------------------------------------
+
+-----Caso d'uso UC2: crea esame-----
+Attore primario: amministrazione
+- L'ammistrazione crea un esame
+- L'amministrazione imposta una tipologia di esame all'esame creato
+- L'amministrazione associa un paziente all'esame creato
+- Il sistema registra l'esame (impostando automaticamente la data di prenotazione)
+Precondizioni: l'amministratore è identificato e autenticato
+
+---------------------------------------------------------------------
+
+-----Caso d'uso UC3: consulta risultati proprio esame-----
+Attore primario: paziente
+- Il paziente consulta l'elenco dei propri esami
+- Il sistema mostra al paziente l'elenco dei suoi esami
+- Il paziente chiede il dettaglio di un esame
+- Il sistema mostra il dettaglio dell'esame
+- Il paziente ripete i passi precedenti finché necessario
+Precondizioni: il paziente è identificato e autenticato
+
+---------------------------------------------------------------------
+
+-----Caso d'uso UC4: inserimento tipologia di esame-----
+Attore primario: amministrazione
+- L'amministratore inserisce una nuova tipologia di esame specificandone i dettagli
+- Il sistema registra la tipologia di esame
+- I punti precedenti vengono ripetuti fino a che necessario
+Precondizioni: l'amministratore è identificato e autenticato
+
+---------------------------------------------------------------------
+
+-----Caso d'uso UC5: esami effettuati da un medico-----
+Attore primario: amministrazione
+- L’amministratore fornisce nome e cognome di un medico
+- Il sistema mostra all’amministratore tutti gli esami effettuati dal medico
+Precondizioni: l’amministratore è identificato e autenticato
+
+---------------------------------------------------------------------
+
+-----Caso d'uso UC6: inserimento risultati esame-----
+Attore primario: amministrazione
+- L'amministrazione inserisce un codice esame
+- Il sistema presenta all'amministratore l'esame corrispondente al codice immesso
+- L'amministratore inserisce tutti i risultati dell'esame
+Precondizioni: l'amministratore è identificato e autenticato
+
+---------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

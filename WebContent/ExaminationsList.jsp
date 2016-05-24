@@ -4,10 +4,18 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" href="assets/css/main.css" />
+<title>Esami disponibili - LegClinic</title>
 </head>
 <body>
-	<form action = "ExaminationTypeList" method = "POST">
-	<input type = "submit" value = "Mostra"></form>
+	<h1 align="center">Qui puoi visalizzare la nostra offerta</h1>
+	<div id="main">
+	    <header class="major container 75%">
+
+		<a href="index.html">Torna alla Homepage</a>
+		</header>
+	</div>
 </body>
+
 </html>

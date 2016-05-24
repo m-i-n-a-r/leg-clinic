@@ -4,14 +4,21 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-		<title>Insert title here</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<title>Tipologie di esame inserita</title>
 	</head>
 	<body>
+	<div id="main">
+	<header class="major container 75%">
 		<ul>
 			<c:forEach var="exam" items="${examinationTypeList}">
 				<li>${exam.name}: ${exam.description}</li>
 			</c:forEach>
 		</ul>
+		</header>
+		</div>
+		<h3><a href="administrationArea.jsp">Torna all'area amministrativa</a></h3>
 
 	</body>
 </html>

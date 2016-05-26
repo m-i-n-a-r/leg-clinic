@@ -10,7 +10,7 @@
 <title>Area amministrativa</title>
 </head>
 <body>
-	<div id="main">
+	<div id="wrap">
 	<header class="major container 75%">
 		<center>
 			<h1>
@@ -27,10 +27,15 @@
 	</div>
 	<br>
 	<center>
-		<h3><a href="login.jsp">Log out</a></h3>
-		<h4><a href="newExaminationType.jsp">Amplia offerta</a></h4>
-		<h5><a href="newExam.jsp">Nuovo esame</a></h5>
-		<h6><a href="newPatient.jsp">Nuovo paziente</a></h6>
+		
+		<h1><a href="newExaminationType.jsp">Amplia offerta</a></h1>
+		<h1><a href="newExamination.jsp">Nuovo esame</a></h1>
+		<h1><a href="newExamResult.jsp">Inserisci risultati</a></h1>
+		<h1><a href="newPatient.jsp">Nuovo paziente</a></h1>
+		<h1><a href="newDoctor.jsp">Nuovo medico</a></h1>
+		<h1><a href="searchDoctor.jsp">Cerca esami per medico</a></h1>
+		<br>
+		<h1><a href="login.jsp">Log out</a></h1>
 	</center>
 </body>
 </html>

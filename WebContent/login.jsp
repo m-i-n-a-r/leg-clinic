@@ -7,21 +7,28 @@
 <title>Login - LegClinic</title>
 </head>
 <body>
-	<h1 align="center">BENVENUTO!</h1>
-	<div id="main">
+
+	<div id="wrap">
 	<header class="major container 75%">
+	<h1 align="center">BENVENUTO!</h1>
 		<form action="loginController" method="post">
 			
-			Email: <input type="email" name="email" class="form-control"
+			Email: <input type="email" name="email" placeholder="Il tuo indirizzo mail" class="form-control"
 				value="${param['email']}"><br>
 				<font color="red"> ${emailError} </font> <br>
 				
-			Password: <input type="password" name="password" class="form-control"
+			Password: <input type="password" name="password" placeholder="La tua password" class="form-control"
 				value="${param['password']}"><br>
 				<font color="red"> ${passwordError} </font> <br>
 				
 				<input type="submit" value="Invia">
 		</form>
+
+      <div>
+         Su questo sito è possibile eseguire unicamente l'accesso! Se vuoi entrare a far parte della nostra utenza,
+         chiedi la registrazione in sede o via email!
+      </div>
+
 		<h2> <a href="index.html">Torna alla Homepage</a> </h2>
 		</header>
 	</div>

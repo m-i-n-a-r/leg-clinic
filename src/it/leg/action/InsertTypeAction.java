@@ -1,4 +1,4 @@
-package it.leg.controller.action;
+package it.leg.action;
 
 import javax.servlet.http.HttpServletRequest;
 

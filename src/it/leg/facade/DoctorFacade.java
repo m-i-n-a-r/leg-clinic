@@ -11,6 +11,7 @@ package it.leg.facade;
 
 	
     import it.leg.model.Doctor;
+import it.leg.model.Patient;
 
 
 		public class DoctorFacade{
@@ -51,5 +52,11 @@ package it.leg.facade;
 		    return (List<Doctor>) query.getResultList();	
 	 		
 	 	}
+	 	 public Doctor find(String name){
+	 		 tx.begin();
+	    	 Doctor doctor= em.find(Doctor.class, name);
+	    	 tx.commit();
+	    	 return doctor;
+	     }
 
 }

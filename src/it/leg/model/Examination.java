@@ -44,6 +44,10 @@ public class Examination {
 
 	// Getters e Setters
 	
+	public Examination() {
+		
+	}
+
 	public Patient getPatient() {
 		return patient;
 	}

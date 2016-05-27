@@ -41,6 +41,10 @@ public class Doctor {
 
 	// Getters e Setters
 	
+	public Doctor() {
+	
+	}
+
 	public String getName() {
 		return name;
 	}

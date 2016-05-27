@@ -53,8 +53,9 @@ public class ExaminationFacade {
 	}
 	
 	public List<Examination> findAll() {
-		
+		tx.begin();
 		Query query = em.createQuery("SELECT e FROM Esame e");
+		tx.commit();
 	    return (List<Examination>) query.getResultList();	
 	}
 	

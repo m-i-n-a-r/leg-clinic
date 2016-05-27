@@ -55,4 +55,11 @@ public class PatientFacade {
 	    return (List<Patient>) query.getResultList();	
 	}
 	
+     public Patient find(String name){
+    	 tx.begin();
+    	 Query query= em.createQuery("SELECT p FROM Patient p");
+    	 tx.commit();
+    	 return( Patient) query.getSingleResult();
+     }
+	
 }

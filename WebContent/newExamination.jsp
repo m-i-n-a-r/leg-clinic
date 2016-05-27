@@ -14,25 +14,23 @@
 	<div id="main">
 	<header class="major container 75%">
 			<h1>
-				<font>Inserisci un esame specifico</font>
+				<font>Inserisci un esame </font>
 			</h1><br>
 				<form action="ExaminationController" method="post">
 			
-			Nome: <input type="text" name="name" class="form-control"
-				value="${param['name']}"><br>
-				<font color="red"> ${nameError} </font> <br>
+			TipologiaEsame: <input type="text" name="type" class="form-control"
+				value="${param['type']}"><br>
+				<font color="red"> ${typeError} </font> <br>
 				
-			Descrizione: <input type="text" name="description" class="form-control"
-				value="${param['description']}"><br>
-				<font color="red"> ${descriptionError} </font> <br>
+			Paziente: <input type="text" name="patient" class="form-control"
+				value="${param['patient']}"><br>
+				<font color="red"> ${patientError} </font> <br>
 				
-			Costo: <input type="text" name="cost" class="form-control"
-				value="${param['cost']}"><br>
-				<font color="red"> ${costError} </font> <br>
+			Medico: <input type="text" name="doctor" class="form-control"
+				value="${param['doctor']}"><br>
+				<font color="red"> ${doctorError} </font> <br>
 				
-			<input type="checkbox" name="condition1" value="condition"> Inseriremo dopo le condizioni!<br>
-				
-				<input type="submit" onclick="return confirm('sei sicuro?')" value="Crea Tipologia">
+				<input type="submit" onclick="return confirm('sei sicuro?')" value="Crea Esame" >
 		</form>
 		</header>
 		</div>

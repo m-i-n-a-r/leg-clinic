@@ -46,6 +46,11 @@ public class ExaminationType {
 
 	// Getters e Setters
 
+	public ExaminationType() {
+		this.preconditions= new LinkedList <Condition>();
+	}
+
+	
 	public String getName() {
 		return name;
 	}

@@ -8,6 +8,7 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
 import it.leg.model.ExaminationType;
+import it.leg.model.Patient;
 
 
 public class ExaminationTypeFacade {
@@ -43,7 +44,7 @@ public class ExaminationTypeFacade {
 		tx.commit();
 	}
 	
-	public ExaminationType findByPrimaryKey(Long id) {
+	public ExaminationType findByPrimaryKey(String id) {
 		tx.begin();
 		
 		ExaminationType type = em.find(ExaminationType.class, id);
@@ -58,5 +59,11 @@ public class ExaminationTypeFacade {
 		Query query = em.createQuery("SELECT e FROM ExaminationType e");
 	    return (List<ExaminationType>) query.getResultList();	
 	}
+	 public ExaminationType find(String name){
+		 tx.begin();
+    	 ExaminationType type = em.find(ExaminationType.class,"name");
+    	 tx.commit();
+    	 return type;
+     }
 
 }

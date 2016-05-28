@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import it.leg.controller.action.DoctorAction;
+import it.leg.controller.action.InsertDoctorAction;
 import it.leg.controller.helper.DoctorHelper;
 
 
@@ -24,7 +24,7 @@ public class DoctorController extends HttpServlet {
 			throws ServletException, IOException {
 		
 		DoctorHelper helper = new DoctorHelper();
-		DoctorAction action = new DoctorAction();
+		InsertDoctorAction action = new InsertDoctorAction();
 		String nextPage = "/newDoctor.jsp";
 		
 		if (helper.validate(request)) {

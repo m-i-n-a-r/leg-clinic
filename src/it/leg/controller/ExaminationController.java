@@ -12,8 +12,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import it.leg.controller.action.InsertExaminationAction;
 import it.leg.controller.helper.ExaminationHelper;
-import it.leg.facade.ExaminationFacade;
-
 
 @WebServlet("/ExaminationController")
 public class ExaminationController extends HttpServlet {
@@ -25,7 +23,7 @@ public class ExaminationController extends HttpServlet {
 	             String nextPage= "/newExamination.jsp";
 	             
 	             if (helper.validate(request)){
-	            	 nextPage=action.execute(request);
+	            	 nextPage = action.execute(request);
 	             }
 	             
 	ServletContext servletContext = getServletContext();

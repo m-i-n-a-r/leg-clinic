@@ -9,7 +9,7 @@ import javax.persistence.Query;
 import it.leg.model.ExaminationType;
 
 
-@Stateless(name = "ExaminationTypeFacadeFacade")
+@Stateless(name = "ExaminationTypeFacade")
 public class ExaminationTypeFacade {
 
 	@PersistenceContext(unitName = "legClinic")

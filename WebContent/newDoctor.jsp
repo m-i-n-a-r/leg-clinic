@@ -21,17 +21,17 @@
 				<h:form>
 				<div>Nome: <h:inputText value = "#{DoctorController.name}"
 					required="true"
-                 	requiredMessage="Nome obbligatorio" id="nome"/> <strong><h:message for="nome" />
+                 	requiredMessage="Nome obbligatorio" id="nome"/> <h:message for="nome" />
 				</div>
 					
 				<div>Cognome: <h:inputText value = "#{DoctorController.surname}"
 					required="true"
-                 	requiredMessage="Cognome obbligatorio" id="cognome"/> <strong><h:message for="cognome" />
+                 	requiredMessage="Cognome obbligatorio" id="cognome"/> <h:message for="cognome" />
 				</div>
 				
 				<div>Specializzazione: <h:inputText value = "#{DoctorController.specialization}"
 					required="true"
-                 	requiredMessage="Specializzazione obbligatoria" id="specialization"/> <strong><h:message for="specialization" />
+                 	requiredMessage="Specializzazione obbligatoria" id="specialization"/> <h:message for="specialization" />
 				</div>	
 				
 				<div><h:commandButton value="Submit"  action="#{DoctorController.createDoctor}"/></div>

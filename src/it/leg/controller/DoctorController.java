@@ -1,37 +1,31 @@
 package it.leg.controller;
 
-import java.io.IOException;
 
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
-import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletContext;
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
-import it.leg.controller.helper.DoctorHelper;
 import it.leg.facade.DoctorFacade;
 import it.leg.model.Doctor;
 
 
+@ManagedBean (name = "DoctorController")
 @SessionScoped
-@ManagedBean
-public class DoctorController extends HttpServlet {
-	private static final long serialVersionUID = 1L;
+public class DoctorController {
        
 	@EJB(beanName = "DoctorFacade")
 	private DoctorFacade facade;
+	
+	private Long id;
 	
 	private String name;
 	private String surname;
 	private String specialization;
 	
+	private Doctor doctor;
+	
 	public String createDoctor() {
-		facade.createDoctor(name, surname, specialization);
+		this.doctor = facade.createDoctor(name, surname, specialization);
 
 		return "examinationType";
 	}
@@ -58,6 +52,22 @@ public class DoctorController extends HttpServlet {
 	
 	public void setSpecialization(String specialization) {
 		this.specialization = specialization;
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public Doctor getDoctor() {
+		return doctor;
+	}
+
+	public void setDoctor(Doctor doctor) {
+		this.doctor = doctor;
 	}
 
 }

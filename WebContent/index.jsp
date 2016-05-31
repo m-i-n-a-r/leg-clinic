@@ -9,7 +9,7 @@
 	<body>
 			<div id="header">
 				
-				<span class="logo icon fa-plus"></span> </br>
+				<span class="logo icon fa-plus"></span> <br>
 				<i class="fa fa-cog fa-spin fa-3x fa-fw"></i>
 
 				<h1>Benvenuto nella Homepage di Leg Clinic</h1>

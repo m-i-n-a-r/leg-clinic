@@ -16,7 +16,7 @@ public class PatientFacade {
 	private EntityManager em;
 	
 	public Patient createPatient(String name, String surname, String email, String password) {	
-		Patient patient= new Patient(name,surname,email,password);
+		Patient patient = new Patient(name, surname, email, password);
 		em.persist(patient);
 		return patient;
 	}

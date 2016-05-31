@@ -9,32 +9,37 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="stylesheet" href="assets/css/main.css" />
-<title>Nuovo medico</title>
+<title>Nuovo Paziente</title>
 </head>
 <body>
 	<div id="main">
 	<header class="major container 75%">
 			<h1>
-				<font>Inserisci un nuovo medico della clinica</font>
+				<font>Registra un paziente</font>
 			</h1><br>
 				<f:view>
 				<h:form>
-				<div>Nome: <h:inputText value = "#{DoctorController.name}"
+				<div>Email: <h:inputText value = "#{PatientController.email}"
+					required="true"
+                 	requiredMessage="Email obbligatoria" id="email"/> <strong><h:message for="email" /></strong>
+				 </div>
+				
+				<div>Nome: <h:inputText value = "#{PatientController.name}"
 					required="true"
                  	requiredMessage="Nome obbligatorio" id="nome"/> <strong><h:message for="nome" />
 				</div>
-					
-				<div>Cognome: <h:inputText value = "#{DoctorController.surname}"
+				
+				<div>Cognome: <h:inputText value = "#{PatientController.surname}"
 					required="true"
                  	requiredMessage="Cognome obbligatorio" id="cognome"/> <strong><h:message for="cognome" />
 				</div>
 				
-				<div>Specializzazione: <h:inputText value = "#{DoctorController.specialization}"
+				<div>Password: <h:inputText value = "#{PatientController.password}"
 					required="true"
-                 	requiredMessage="Specializzazione obbligatoria" id="specialization"/> <strong><h:message for="specialization" />
+                 	requiredMessage="Password obbligatoria" id="password"/> <strong><h:message for="password" />
 				</div>	
 				
-				<div><h:commandButton value="Submit"  action="#{DoctorController.createDoctor}"/></div>
+				<div><h:commandButton value="Submit"  action="#{PatientController.createPatient}"/></div>
 				</h:form>
 				</f:view>
 		</header>

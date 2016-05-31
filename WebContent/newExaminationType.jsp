@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ page import="it.leg.model.ExaminationType"%>
+<%@ taglib prefix="f"  uri="http://java.sun.com/jsf/core"%>
+<%@ taglib prefix="h"  uri="http://java.sun.com/jsf/html"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -15,26 +17,28 @@
 			<h1>
 				<font>Inserisci una nuova tipologia di esame</font>
 			</h1><br>
-				<form action="ExaminationTypeController" method="post">
-			
-			Nome: <input type="text" name="name" class="form-control"
-				value="${param['name']}"><br>
-				<font color="red"> ${nameError} </font> <br>
+				<f:view>
+				<h:form>
+				<div>Nome: <h:inputText value = "#{ExaminationTypeController.name}"
+					required="true"
+                 	requiredMessage="Nome obbligatorio" id="name"/> <strong><h:message for="name" />
+				</div>
+					
+				<div>Descrizione: <h:inputText value = "#{ExaminationTypeController.description}"
+					required="true"
+                 	requiredMessage="Descrizione obbligatoria" id="description"/> <strong><h:message for="description" />
+				</div>
 				
-			Descrizione: <input type="text" name="description" class="form-control"
-				value="${param['description']}"><br>
-				<font color="red"> ${descriptionError} </font> <br>
+				<div>Costo: <h:inputText value = "#{ExaminationTypeController.cost}"
+					required="true"
+                 	requiredMessage="Costo obbligatorio" id="cost"/> <strong><h:message for="cost" />
+				</div>	
 				
-			Costo: <input type="text" name="cost" class="form-control"
-				value="${param['cost']}"><br>
-				<font color="red"> ${costError} </font> <br>
+				<input type="checkbox" name="condition1" value="condition"> Inseriremo dopo le condizioni!<br>
 				
-			<input type="checkbox" name="condition1" value="condition"> Inseriremo dopo le condizioni!<br>
-				
-				<input type="submit" onclick="return confirm('sei sicuro?')" value="Crea Tipologia">
-		</form>
-		</header>
-		</div>
+				<div><h:commandButton value="Submit"  action="#{ExaminationTypeController.createExaminationType}"/></div>
+				</h:form>
+				</f:view>
 	<center>
 		<h3><a href="administrationArea.jsp">Torna all'area amministrativa</a></h3>
 	</center>

@@ -25,6 +25,7 @@
 	<classpathentry kind="lib" path="C:/Users/gluca/Documents/Università/Workspace Universitario/LegClinic/WebContent/WEB-INF/lib/javax.servlet-3.0.jar"/>
 	<classpathentry kind="lib" path="C:/Users/gluca/Documents/Università/Workspace Universitario/LegClinic/WebContent/WEB-INF/lib/jboss-logging-3.3.0.Final.jar"/>
 	<classpathentry kind="lib" path="C:/Users/gluca/Documents/Università/Workspace Universitario/LegClinic/WebContent/WEB-INF/lib/postgresql-9.4.1208.jre6.jar"/>
-	<classpathentry kind="lib" path="C:/Users/gluca/Documents/Università/Workspace Universitario/LegClinic/WebContent/WEB-INF/lib/javax.faces-2.2.9.jar"/>
+	<classpathentry kind="lib" path="C:/Users/gluca/Documents/Università/Workspace Universitario/LegClinic/WebContent/WEB-INF/lib/myfaces-api-2.1.17.jar"/>
+	<classpathentry kind="lib" path="C:/Users/gluca/Documents/Università/Workspace Universitario/LegClinic/WebContent/WEB-INF/lib/myfaces-impl-2.1.17.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

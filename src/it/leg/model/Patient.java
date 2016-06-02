@@ -44,7 +44,7 @@ public class Patient {
 	}
 	
 	public Patient() {
-		this.examinations = new LinkedList<Examination>();
+
 	}
 	
 	// Getters e Setters

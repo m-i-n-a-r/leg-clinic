@@ -8,6 +8,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 import it.leg.model.Admin;
+import it.leg.model.Doctor;
 
 
 @Stateless(name = "AdminFacade")
@@ -17,7 +18,7 @@ public class AdminFacade {
 	private EntityManager em;
 	
 	public Admin createAdmin(String firstName, String lastName, String email, String password) {
-		Admin admin = new Admin(firstName,lastName,email,password);
+		Admin admin = new Admin(firstName, lastName, email, password);
 		em.persist(admin);
 		return admin;
 	}
@@ -39,6 +40,11 @@ public class AdminFacade {
 	    return (List<Admin>) query.getResultList();	
  		
  	}
+ 	
+	public Admin find(String name){
+		Admin admin = em.find(Admin.class, name);
+		return admin;
+	}
 }
 
 

@@ -5,16 +5,16 @@ import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
-import it.leg.facade.PatientFacade;
-import it.leg.model.Patient;
+import it.leg.facade.AdminFacade;
+import it.leg.model.Admin;
 
 
-@ManagedBean (name = "PatientController")
+@ManagedBean (name = "AdminController")
 @SessionScoped
-public class PatientController {
+public class AdminController {
        
-	@EJB(beanName = "PatientFacade")
-	private PatientFacade facade;
+	@EJB(beanName = "AdminFacade")
+	private AdminFacade facade;
 	
 	private Long id;
 	
@@ -23,10 +23,10 @@ public class PatientController {
 	private String surname;
 	private String password;
 	
-	private Patient patient;
+	private Admin admin;
 	
-	public String createPatient() {
-		this.patient = facade.createPatient(name, surname, email, password);
+	public String createAdmin() {
+		this.admin = facade.createAdmin(name, surname, email, password);
 
 		return "examinationType";
 	}
@@ -71,12 +71,12 @@ public class PatientController {
 		this.id = id;
 	}
 
-	public Patient getPatient() {
-		return this.patient;
+	public Admin getAdmin() {
+		return this.admin;
 	}
 
-	public void setPatient(Patient patient) {
-		this.patient = patient;
+	public void setAdmin(Admin admin) {
+		this.admin = admin;
 	}
 
 }

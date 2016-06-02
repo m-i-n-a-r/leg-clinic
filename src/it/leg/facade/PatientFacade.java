@@ -31,7 +31,7 @@ public class PatientFacade {
 	
 	public Patient findByPrimaryKey(Long id) {
 		Patient patient = em.find(Patient.class, id);
-		return patient ;
+		return patient;
 	}
 	
 	public List<Patient> findAll() {
@@ -39,9 +39,9 @@ public class PatientFacade {
 	    return (List<Patient>) query.getResultList();	
 	}
 	
-     public Patient find(String name){
-    	 Query query= em.createQuery("SELECT p FROM Patient p");
-    	 return( Patient) query.getSingleResult();
-     }
+	public Patient find(String name){
+		Patient patient = em.find(Patient.class, name);
+		return patient;
+	}
 	
 }

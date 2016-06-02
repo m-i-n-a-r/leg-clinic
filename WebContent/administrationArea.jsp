@@ -35,6 +35,7 @@
 		<h1><a href="newExamResult.jsp">Inserisci risultati</a></h1>
 		<h1><a href="newPatient.jsp">Nuovo paziente</a></h1>
 		<h1><a href="newDoctor.jsp">Nuovo medico</a></h1>
+		<h1><a href="newAdmin.jsp">Nuovo admin</a></h1>
 		<h1><a href="searchDoctor.jsp">Cerca esami per medico</a></h1>
 		<br>
 		<h1><a href="login.jsp">Log out</a></h1>

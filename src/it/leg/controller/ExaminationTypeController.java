@@ -3,15 +3,13 @@ package it.leg.controller;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
-import javax.servlet.http.HttpServlet;
 
 import it.leg.facade.ExaminationTypeFacade;
 
 
+@ManagedBean (name = "ExaminationTypeController")
 @SessionScoped
-@ManagedBean
-public class ExaminationTypeController extends HttpServlet {
-	private static final long serialVersionUID = 1L;
+public class ExaminationTypeController {
 	
 	@EJB(beanName = "ExaminationTypeFacade")
 	private ExaminationTypeFacade facade;
@@ -20,6 +18,7 @@ public class ExaminationTypeController extends HttpServlet {
 	private String description;
 	private Float cost;
 
+	private Long code;
 
 	public String createExaminationType() {
 		facade.createExaminationType(name, description, cost);
@@ -36,6 +35,14 @@ public class ExaminationTypeController extends HttpServlet {
 	
 	public Float getCost() {
 		return this.cost;
+	}
+	
+	private Long getCode() {
+		return this.code;
+	}
+	
+	private void setCode(Long code) {
+		this.code = code;
 	}
 	
 	public void setName(String name) {

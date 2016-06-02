@@ -39,9 +39,18 @@ public class PatientFacade {
 	    return (List<Patient>) query.getResultList();	
 	}
 	
-	public Patient find(String name){
-		Patient patient = em.find(Patient.class, name);
-		return patient;
+	public Patient findByEmail(String email) {
+		Query queryCF = em.createQuery("SELECT OBJECT(p) FROM Patient AS p WHERE p.email=?1");
+		queryCF.setParameter(1, email);
+		
+		List<Patient> patients = queryCF.getResultList();
+		if (patients.isEmpty()) {
+			return null;
+		} 
+		else {
+			Patient patient = (Patient)patients.get(0);
+			return patient;
+		}
 	}
 	
 }

@@ -9,6 +9,7 @@ import javax.persistence.Query;
 
 import it.leg.model.Admin;
 import it.leg.model.Doctor;
+import it.leg.model.Patient;
 
 
 @Stateless(name = "AdminFacade")
@@ -41,9 +42,18 @@ public class AdminFacade {
  		
  	}
  	
-	public Admin find(String name){
-		Admin admin = em.find(Admin.class, name);
-		return admin;
+	public Admin findByEmail(String email) {
+		Query queryCF = em.createQuery("SELECT OBJECT(a) FROM Admin AS a WHERE a.email=?1");
+		queryCF.setParameter(1, email);
+		
+		List<Admin> admins = queryCF.getResultList();
+		if (admins.isEmpty()) {
+			return null;
+		} 
+		else {
+			Admin admin = (Admin) admins.get(0);
+			return admin;
+		}
 	}
 }
 

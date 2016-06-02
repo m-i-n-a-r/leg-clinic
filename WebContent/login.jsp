@@ -19,9 +19,10 @@
 				
 			Password: <input type="password" name="password" placeholder="La tua password" class="form-control"
 				value="${param['password']}"><br>
-				<font color="red"> ${passwordError} </font> <br>
+				<font color="red">${passwordError} </font> <br>
 				
-				<input type="submit" value="Invia">
+				<input type="submit" value="Invia"><br>
+				<font color="red">${loginError}</font><br>
 		</form>
 
       <div>

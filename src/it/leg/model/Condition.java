@@ -3,6 +3,7 @@ package it.leg.model;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Condition {
@@ -13,9 +14,11 @@ public class Condition {
 	@Column(nullable = false)
 	private String description;
 	
+	
 	public Condition(String name, String description) {
 		this.name = name;
 		this.description = description;
+		
 	}
 	
 	// Getters and Setters
@@ -36,4 +39,8 @@ public class Condition {
 		this.description = description;
 	}
 	
+	@Override
+	public String toString() {
+		return "nome:" + this.name + " descrizione:" + this.description;
+	}
 }

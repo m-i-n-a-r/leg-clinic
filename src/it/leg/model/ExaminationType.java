@@ -29,7 +29,7 @@ public class ExaminationType {
 	
 	@OneToMany(fetch = FetchType.LAZY)
 	@JoinColumn(name ="condition_id")
-	private List<Condition> preconditions;
+	public List<Condition> preconditions;
 	
 	@OneToMany(fetch = FetchType.LAZY)
 	@JoinColumn(name = "type_id")
@@ -40,17 +40,18 @@ public class ExaminationType {
 		this.name = name;
 		this.description = description;
 		this.cost = cost;
-		preconditions = new LinkedList<>();
-		examResults = new LinkedList<>();
-	}
-
-	// Getters e Setters
-
-	public ExaminationType() {
-		this.preconditions= new LinkedList <Condition>();
+		this.preconditions = new LinkedList<>();
+		this.examResults = new LinkedList<>();
 	}
 
 	
+
+	public ExaminationType() {
+		this.preconditions= new LinkedList <Condition>();
+		this.examResults= new LinkedList <ExaminationResult> (); 
+	}
+
+	// Getters e Setters
 	public String getName() {
 		return name;
 	}
@@ -95,5 +96,11 @@ public class ExaminationType {
 	
 	public String toString() {
 		return "Nome: " + this.name + "Descrizione: " + this.description;
+	}
+	public List<Condition> getPreconditions() {
+		return preconditions;
+	}
+	public void setPreconditions(List<Condition> preconditions) {
+		this.preconditions = preconditions;
 	}
 }

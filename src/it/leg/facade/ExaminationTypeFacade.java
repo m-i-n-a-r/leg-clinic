@@ -6,6 +6,8 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+
+import it.leg.model.Condition;
 import it.leg.model.ExaminationType;
 
 
@@ -15,7 +17,7 @@ public class ExaminationTypeFacade {
 	@PersistenceContext(unitName = "legClinic")
 	private EntityManager em;
 
-	public ExaminationType createExaminationType(String name, String description, Float cost) {	
+	public ExaminationType createExaminationType(String name, String description, Float cost){	
 		ExaminationType examinationType = new ExaminationType(name, description, cost);
 		em.persist(examinationType);
 		return examinationType;
@@ -43,5 +45,13 @@ public class ExaminationTypeFacade {
 		ExaminationType type = em.find(ExaminationType.class, "name");
 		return type;
 	}
-
+	public List<Condition> addCondition(ExaminationType type, Condition condition) {
+		List<Condition> preconditions = type.getPreconditions();
+		
+		preconditions.add(condition);
+		
+		type.setPreconditions(preconditions);
+		
+		return preconditions;
+	}
 }

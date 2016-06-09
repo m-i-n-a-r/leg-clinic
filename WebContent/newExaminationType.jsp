@@ -34,7 +34,10 @@
                  	requiredMessage="Costo obbligatorio" id="cost"/> <strong><h:message for="cost" />
 				</div>	
 				
-				<input type="checkbox" name="condition1" value="condition"> Inseriremo dopo le condizioni!<br>
+				 <div>Nome Prerequisito:<h:inputText value="#{ConditionController.name}"/>
+				 </div>
+			     <div>Descrizione Prerequisito:<h:inputText  value="#{ConditionController.description}"/>
+			     </div>
 				
 				<div><h:commandButton value="Submit"  action="#{ExaminationTypeController.createExaminationType}"/></div>
 				</h:form>

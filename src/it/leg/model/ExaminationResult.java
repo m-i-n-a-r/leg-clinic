@@ -2,7 +2,11 @@ package it.leg.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 @Entity
 public class ExaminationResult {	
@@ -10,9 +14,9 @@ public class ExaminationResult {
 	@Id
 	private String name;
 	
-	@Column (nullable = false)
+	@Column
 	private String value;
-
+	
 	public ExaminationResult(String name, String value) {
 		this.name = name;
 		this.value = value;

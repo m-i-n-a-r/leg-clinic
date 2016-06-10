@@ -3,6 +3,7 @@ package it.leg.model;
 import java.util.LinkedList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -31,24 +32,20 @@ public class ExaminationType {
 	@JoinColumn(name ="condition_id")
 	public List<Condition> preconditions;
 	
-	@OneToMany(fetch = FetchType.LAZY)
-	@JoinColumn(name = "type_id")
-	private List<ExaminationResult> examResults;
+	@OneToMany(mappedBy = "examinationType", cascade = CascadeType.ALL)
+	private List<ExaminationResult> results;
 
 
-	public ExaminationType(String name, String description, Float cost) {
+	public ExaminationType(String name, String description, Float cost, List<ExaminationResult> results) {
 		this.name = name;
 		this.description = description;
 		this.cost = cost;
+		this.results = results;
 		this.preconditions = new LinkedList<>();
-		this.examResults = new LinkedList<>();
 	}
-
-	
 
 	public ExaminationType() {
 		this.preconditions= new LinkedList <Condition>();
-		this.examResults= new LinkedList <ExaminationResult> (); 
 	}
 
 	// Getters e Setters
@@ -91,7 +88,7 @@ public class ExaminationType {
 	}
 	
 	public void AddExaminationResult(ExaminationResult result) {
-		this.examResults.add(result);
+		this.results.add(result);
 	}
 	
 	public String toString() {

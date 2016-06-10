@@ -8,6 +8,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 import it.leg.model.Condition;
+import it.leg.model.ExaminationResult;
 import it.leg.model.ExaminationType;
 
 
@@ -17,8 +18,8 @@ public class ExaminationTypeFacade {
 	@PersistenceContext(unitName = "legClinic")
 	private EntityManager em;
 
-	public ExaminationType createExaminationType(String name, String description, Float cost){	
-		ExaminationType examinationType = new ExaminationType(name, description, cost);
+	public ExaminationType createExaminationType(String name, String description, Float cost, List<ExaminationResult> results){	
+		ExaminationType examinationType = new ExaminationType(name, description, cost, results);
 		em.persist(examinationType);
 		return examinationType;
 	}

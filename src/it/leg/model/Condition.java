@@ -16,9 +16,10 @@ public class Condition {
 	
 	public Condition(String name, String description) {
 		this.name = name;
-		this.description = description;
-		
+		this.description = description;	
 	}
+	
+	public Condition() {}
 	
 	// Getters and Setters
 	

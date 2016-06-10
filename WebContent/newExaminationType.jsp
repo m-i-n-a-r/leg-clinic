@@ -17,37 +17,40 @@
 			<h1>
 				<font>Inserisci una nuova tipologia di esame</font>
 			</h1><br>
+				
 				<f:view>
 				<h:form>
+
 				<div>Nome: <h:inputText value = "#{ExaminationTypeController.name}"
 					required="true"
-                 	requiredMessage="Nome obbligatorio" id="name"/> <strong><h:message for="name" /></strong>
+                 	requiredMessage="Nome obbligatorio" id="name"/> <h:message for="name" />
 				</div>
 					
 				<div>Descrizione: <h:inputText value = "#{ExaminationTypeController.description}"
 					required="true"
-                 	requiredMessage="Descrizione obbligatoria" id="description"/> <strong><h:message for="description" /></strong>
+                 	requiredMessage="Descrizione obbligatoria" id="description"/> <h:message for="description" />
 				</div>
 				
 				<div>Costo: <h:inputText value = "#{ExaminationTypeController.cost}"
 					required="true"
-                 	requiredMessage="Costo obbligatorio" id="cost"/> <strong><h:message for="cost" /></strong>
+                 	requiredMessage="Costo obbligatorio" id="cost"/> <h:message for="cost" />
 				</div>	
 				
-				<!-- <div>Nome indicatore: <h:inputText value="#{ExaminationResultController.name}"/>
+				<div>Nome indicatore: <h:inputText value="#{ExaminationTypeController.resultName}"/></div>
+				<br>
 				
-				</div>-->
+				<div><h:commandButton value="Aggiungi" 
+					action="#{ExaminationTypeController.insertExaminationResult}"/></div>
+				
+				<br><br>
+				<div><h:commandButton value="Crea Tipologia" action="#{ExaminationTypeController.createExaminationType}"/></div>
 
-				<!-- This doesn't work, just like everything else i tried. -->				
-				<div>Seleziona prerequisiti:
-	            	<h:selectManyCheckbox value="#{ConditionController.conditions}">
-	            	<f:param name="id" value="#{condition.name}" />
-	            	</h:selectManyCheckbox>
-        		</div>
-
-				<div><h:commandButton value="Submit"  action="#{ExaminationTypeController.createExaminationType}"/></div>
 				</h:form>
 				</f:view>
+
+		
+		</header>
+		</div>
 	<center>
 		<h3><a href="administrationArea.jsp">Torna all'area amministrativa</a></h3>
 	</center>

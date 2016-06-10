@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-<%@ page import="it.leg.model.ExaminationType"%>
+<%@ page import="it.leg.model.Condition"%>
 <%@ taglib prefix="f"  uri="http://java.sun.com/jsf/core"%>
 <%@ taglib prefix="h"  uri="http://java.sun.com/jsf/html"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -15,37 +15,21 @@
 	<div id="main">
 	<header class="major container 75%">
 			<h1>
-				<font>Inserisci una nuova tipologia di esame</font>
+				<font>Inserisci una nuova condizione selezionabile</font>
 			</h1><br>
 				<f:view>
 				<h:form>
-				<div>Nome: <h:inputText value = "#{ExaminationTypeController.name}"
+				<div>Nome: <h:inputText value = "#{ConditionController.name}"
 					required="true"
                  	requiredMessage="Nome obbligatorio" id="name"/> <strong><h:message for="name" /></strong>
 				</div>
 					
-				<div>Descrizione: <h:inputText value = "#{ExaminationTypeController.description}"
+				<div>Descrizione: <h:inputText value = "#{ConditionController.description}"
 					required="true"
                  	requiredMessage="Descrizione obbligatoria" id="description"/> <strong><h:message for="description" /></strong>
+                 	<br>
+                 	<div><h:commandButton value="Submit"  action="#{ConditionController.createCondition}"/></div>
 				</div>
-				
-				<div>Costo: <h:inputText value = "#{ExaminationTypeController.cost}"
-					required="true"
-                 	requiredMessage="Costo obbligatorio" id="cost"/> <strong><h:message for="cost" /></strong>
-				</div>	
-				
-				<!-- <div>Nome indicatore: <h:inputText value="#{ExaminationResultController.name}"/>
-				
-				</div>-->
-
-				<!-- This doesn't work, just like everything else i tried. -->				
-				<div>Seleziona prerequisiti:
-	            	<h:selectManyCheckbox value="#{ConditionController.conditions}">
-	            	<f:param name="id" value="#{condition.name}" />
-	            	</h:selectManyCheckbox>
-        		</div>
-
-				<div><h:commandButton value="Submit"  action="#{ExaminationTypeController.createExaminationType}"/></div>
 				</h:form>
 				</f:view>
 	<center>

@@ -32,6 +32,7 @@
 		
 		<h1><a href="newExaminationType.jsp">Amplia offerta</a></h1>
 		<h1><a href="newExamination.jsp">Nuovo esame</a></h1>
+		<h1><a href="newCondition.jsp">Nuovo requisito</a></h1>
 		<h1><a href="newExamResult.jsp">Inserisci risultati</a></h1>
 		<h1><a href="newPatient.jsp">Nuovo paziente</a></h1>
 		<h1><a href="newDoctor.jsp">Nuovo medico</a></h1>

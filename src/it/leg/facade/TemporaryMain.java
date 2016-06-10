@@ -4,7 +4,7 @@ import java.util.List;
 
 import it.leg.model.ExaminationType;
 
-public class MainDiProva {
+public class TemporaryMain {
 
 	public static void main(String[] args) {
 		ExaminationTypeFacade exam = new ExaminationTypeFacade();

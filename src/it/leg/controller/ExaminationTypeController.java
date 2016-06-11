@@ -28,6 +28,7 @@ public class ExaminationTypeController {
 	private ExaminationType examinationType;
 	private ExaminationResult examinationResult;
 	private List<ExaminationResult> results = new ArrayList<ExaminationResult>();
+	private List<ExaminationType> examinationTypeList;
 //	private List<Condition> conditions;
 	
 	public String createExaminationType() {
@@ -83,6 +84,19 @@ public class ExaminationTypeController {
 		this.results = results;
 	}
 	
+	public List<ExaminationType> getExaminationTypeList() {
+		return this.examinationTypeList;
+	}
+	
+	public String examinationTypeList() {
+		this.examinationTypeList = typeFacade.findAll();
+		
+		return "examinationsList";
+	}
+	
+	public void setExaminationTypeList(List<ExaminationType> examinationTypeList) {
+		this.examinationTypeList = examinationTypeList;
+	}
 	// useful methods
 	
 	public String insertExaminationResult() {

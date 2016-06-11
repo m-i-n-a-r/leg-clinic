@@ -1,3 +1,7 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="f"  uri="http://java.sun.com/jsf/core"%>
+<%@ taglib prefix="h"  uri="http://java.sun.com/jsf/html"%>
+<%@ taglib prefix="c"  uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE HTML>
 <html>
 	<head>
@@ -36,7 +40,7 @@
 						</div>
 					</section>
 					<section class="feature right">
-						<a href="examinationsList.jsp" class="image icon fa-book"><img src="images/pic02.jpg" alt="" /></a>
+						<a href="examinationTypeList.jsp" class="image icon fa-book"><img src="images/pic02.jpg" alt="" /></a>
 						<div class="content">
 							<h3>Consulta gli esami disponibili</h3>
 							<p>Se vuoi sapere gli esami che puoi svolgere presso di noi, consulta questa pagina</p>
@@ -46,7 +50,7 @@
 						<a href="#" class="image icon fa-question"><img src="images/pic03.jpg" alt="" /></a>
 						<div class="content">
 							<h3>Chi siamo?</h3>
-							<p>Se vuoi saperne di più sulle nostre origini, non ti resta che 
+							<p>Se vuoi saperne di piÃ¹ sulle nostre origini, non ti resta che 
 							visitare questa pagina</p>
 						</div>
 					</section>

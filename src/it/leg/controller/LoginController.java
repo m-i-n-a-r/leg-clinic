@@ -1,67 +1,101 @@
 package it.leg.controller;
 
-import java.io.IOException;
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+
 import javax.ejb.EJB;
-import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletContext;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 
 import it.leg.facade.AdminFacade;
 import it.leg.facade.PatientFacade;
 import it.leg.model.Admin;
 import it.leg.model.Patient;
 
-@WebServlet("/loginController")
-public class LoginController extends HttpServlet {
-	private static final long serialVersionUID = 1L;
 
+@ManagedBean (name = "LoginController")
+@SessionScoped
+public class LoginController {
+       
 	@EJB(beanName = "PatientFacade")
 	private PatientFacade patientFacade;
 	
-	@EJB(beanName = "AdminFacade")
+	@EJB(beanName = "AdminFacade")	
 	private AdminFacade adminFacade;
+	
+	private String email;
+	private String password;
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) 
-			throws ServletException, IOException {
-
-		String nextPage = "/login.jsp";
-		
-		String email = request.getParameter("email");
-		String password = request.getParameter("password");
-		
-		if (email.equals(""))
-			request.setAttribute("emailError", "Inserisci l'email");
-		
-		if (password.equals(""))
-			request.setAttribute("passwordError", "Inserisci la password");
-		
-		if (this.isAdmin(email)) {
-			Admin adminCurrent = this.adminFacade.findByEmail(email);
-			
-			if (adminCurrent.getPassword().equals(password))
-				nextPage = "/administrationArea.jsp";
-			else
-				request.setAttribute("loginError", "Email e/o password errati");
-		}
-		else {
-			Patient currentPatient = this.patientFacade.findByEmail(email);
-			
-			if (currentPatient.getPassword().equals(password))
-				nextPage = "/personalArea.jsp";
-			else
-				request.setAttribute("loginError", "Email e/o password errati");
+	
+	private Admin admin;
+	private Patient patient;
+	
+	public String autenticateUser() {
+		if (this.exists(email)) {
+			if (this.isAdmin(email)) {
+				this.setAdmin(this.adminFacade.findByEmail(email));
+					
+				if (this.admin.getPassword().equals(password))
+					return "administrationArea";
+				else
+					return "error";
+			}
+			else {
+				this.setPatient(this.patientFacade.findByEmail(email));
+					
+				if (this.patient.getPassword().equals(password)) 
+					return "personalArea";
+				else
+					return "error";
+			}
 		}
 		
-		ServletContext servletContext = getServletContext();
-		RequestDispatcher rd = servletContext.getRequestDispatcher(nextPage);
-		rd.forward(request, response);
+		return "error";
+	}
+	
+	private boolean exists(String email) {
+		boolean correct;
+		
+		if (this.isAdmin(email))
+			correct = !(this.adminFacade.findByEmail(email) == null);
+		else
+			correct = !(this.patientFacade.findByEmail(email) == null);
+		
+		return correct;
 	}
 	
 	private boolean isAdmin(String email) {
 		return !(adminFacade.findByEmail(email) == null);
 	}
+
+	public String getEmail() {
+		return this.email;
+	}
+	
+	public String getPassword() {
+		return this.password;
+	}
+	
+	public Admin getAdmin() {
+		return this.admin;
+	}
+	
+	public Patient getPatient() {
+		return this.patient;
+	}
+	
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	
+	public void setPassword(String password) {
+		this.password = password;
+	}
+	
+	public void setAdmin(Admin admin) {
+		this.admin = admin;
+	}
+	
+	public void setPatient(Patient patient) {
+		this.patient = patient;
+	}
+	
 }

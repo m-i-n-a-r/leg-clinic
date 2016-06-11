@@ -1,3 +1,8 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
+<%@ page import="it.leg.model.Doctor"%>
+<%@ taglib prefix="f"  uri="http://java.sun.com/jsf/core"%>
+<%@ taglib prefix="h"  uri="http://java.sun.com/jsf/html"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -11,19 +16,22 @@
 	<div id="wrap">
 	<header class="major container 75%">
 	<h1 align="center">BENVENUTO!</h1>
-		<form action="loginController" method="post">
-			
-			Email: <input type="email" name="email" placeholder="Il tuo indirizzo mail" class="form-control"
-				value="${param['email']}"><br>
-				<font color="red"> ${emailError} </font> <br>
+				<f:view>
+				<h:form>
 				
-			Password: <input type="password" name="password" placeholder="La tua password" class="form-control"
-				value="${param['password']}"><br>
-				<font color="red">${passwordError} </font> <br>
+				<div>Email: <h:inputText value = "#{LoginController.email}"
+					required="true"
+                 	requiredMessage="Email obbligatoria" id="email"/> <h:message for="email" />
+				</div>
+					
+				<div>Password: <h:inputSecret value = "#{LoginController.password}"
+					required="true"
+                 	requiredMessage="Password obbligatoria" id="password"/> <h:message for="password" />
+				</div>
 				
-				<input type="submit" value="Invia"><br>
-				<font color="red">${loginError}</font><br>
-		</form>
+				<div><h:commandButton value="Login"  action="#{LoginController.autenticateUser}"/></div>
+				</h:form>
+				</f:view>
 
       <div>
          Su questo sito è possibile eseguire unicamente l'accesso! Se vuoi entrare a far parte della nostra utenza,

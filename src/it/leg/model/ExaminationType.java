@@ -3,7 +3,6 @@ package it.leg.model;
 import java.util.LinkedList;
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -32,7 +31,8 @@ public class ExaminationType {
 	@JoinColumn(name ="condition_id")
 	public List<Condition> preconditions;
 	
-	@OneToMany(mappedBy = "examinationType", cascade = CascadeType.ALL)
+	@OneToMany(fetch = FetchType.LAZY)
+	@JoinColumn(name ="examinationResult_id")
 	private List<ExaminationResult> results;
 
 

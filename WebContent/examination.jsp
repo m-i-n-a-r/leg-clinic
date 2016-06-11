@@ -25,6 +25,6 @@
 			</center>
 			</header>
 			</div>
-			
+			<h2> <a href="index.jsp">Torna alla Homepage</a> </h2>
 </body>
 </html>

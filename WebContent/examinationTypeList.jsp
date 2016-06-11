@@ -7,12 +7,13 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<!-- should be embedded in main button -->
+<title>Mostra esami</title>
 </head>
 <body>
 	<f:view>
 		<h:form>
-			<h:commandButton value="Invia" action="#{ExaminationTypeController.examinationTypeList}" styleClass="btn btn-lg btn-primary btn-block"/>
+			<h:commandButton value="Invia" action="#{ExaminationTypeController.takeExaminationTypeList}" styleClass="btn btn-lg btn-primary btn-block"/>
 		</h:form>
 	</f:view>
 </body>

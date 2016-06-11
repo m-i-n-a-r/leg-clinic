@@ -28,7 +28,7 @@
 					required="true"
                  	requiredMessage="Password obbligatoria" id="password"/> <h:message for="password" />
 				</div>
-				
+				<br><br>
 				<div><h:commandButton value="Login"  action="#{LoginController.autenticateUser}"/></div>
 				</h:form>
 				</f:view>
@@ -38,7 +38,7 @@
          chiedi la registrazione in sede o via email!
       </div>
 
-		<h2> <a href="index.html">Torna alla Homepage</a> </h2>
+		<h2> <a href="index.jsp">Torna alla Homepage</a> </h2>
 		</header>
 	</div>
 </body>

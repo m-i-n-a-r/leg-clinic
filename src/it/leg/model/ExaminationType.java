@@ -3,7 +3,9 @@ package it.leg.model;
 import java.util.LinkedList;
 import java.util.List;
 
+import javax.persistence.CollectionTable;
 import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -16,7 +18,7 @@ import javax.persistence.OneToMany;
 public class ExaminationType {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long code;
+	private Long id;
 	
 	@Column(nullable = false)
 	private String name;
@@ -26,26 +28,28 @@ public class ExaminationType {
 	
 	@Column(nullable = false)
 	private Float cost;
+
+	@ElementCollection
+	@CollectionTable(name="Indicators", joinColumns=@JoinColumn(name="examinationType_id"))
+	@Column(name="name", nullable = false)
+	private List<String> indicators;
 	
 	@OneToMany(fetch = FetchType.LAZY)
 	@JoinColumn(name ="condition_id")
 	public List<Condition> preconditions;
 	
-	@OneToMany(fetch = FetchType.LAZY)
-	@JoinColumn(name ="examinationResult_id")
-	private List<ExaminationResult> results;
 
-
-	public ExaminationType(String name, String description, Float cost, List<ExaminationResult> results) {
+	public ExaminationType(String name, String description, Float cost) {
 		this.name = name;
 		this.description = description;
 		this.cost = cost;
-		this.results = results;
+		this.indicators = new LinkedList<>();
 		this.preconditions = new LinkedList<>();
 	}
 
 	public ExaminationType() {
-		this.preconditions= new LinkedList <Condition>();
+		this.preconditions = new LinkedList <Condition>();
+		this.indicators = new LinkedList<>();
 	}
 
 	// Getters e Setters
@@ -57,12 +61,12 @@ public class ExaminationType {
 		this.name = name;
 	}
 	
-	public Long getCode() {
-		return code;
+	public Long getId() {
+		return id;
 	}
 	
-	public void setCode(Long code) {
-		this.code = code;
+	public void setId(Long id) {
+		this.id = id;
 	}
 	
 	public String getDescription() {
@@ -80,24 +84,37 @@ public class ExaminationType {
 	public void setCost(Float cost) {
 		this.cost = cost;
 	}
+
+	public List<String> getIndicators() {
+		return indicators;
+	}
+
+	public void setIndicators(List<String> indicators) {
+		this.indicators = indicators;
+	}
 	
 	// Useful methods
 	
-	public void AddCondition(Condition condition) {
+	public void addCondition(Condition condition) {
 		this.preconditions.add(condition);
 	}
 	
-	public void AddExaminationResult(ExaminationResult result) {
-		this.results.add(result);
+	public void addIndicator(String indicator) {
+		this.indicators.add(indicator);
 	}
 	
 	public String toString() {
 		return "Nome: " + this.name + "Descrizione: " + this.description;
 	}
+	
 	public List<Condition> getPreconditions() {
 		return preconditions;
 	}
+	
 	public void setPreconditions(List<Condition> preconditions) {
 		this.preconditions = preconditions;
 	}
+
+	
+	
 }

@@ -1,15 +1,13 @@
 package it.leg.controller;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
-import javax.faces.context.FacesContext;
 
 import it.leg.facade.ExaminationTypeFacade;
-import it.leg.model.ExaminationResult;
 import it.leg.model.ExaminationType;
 
 
@@ -18,30 +16,34 @@ import it.leg.model.ExaminationType;
 public class ExaminationTypeController {
 
 	@EJB(beanName = "ExaminationTypeFacade")
-	private ExaminationTypeFacade typeFacade;
+	private ExaminationTypeFacade examinationTypeFacade;
 	
 	private String name;
 	private String description;
 	private Float cost;
-	private String resultName;
+	private List<String> indicators;
+	private String indicatorNames;
 	
 	private ExaminationType examinationType;
-	private ExaminationResult examinationResult;
-	private List<ExaminationResult> results = new ArrayList<ExaminationResult>();
 	private List<ExaminationType> examinationTypeList;
 //	private List<Condition> conditions;
 	
 	public String createExaminationType() {
-		examinationType = typeFacade.createExaminationType(name, description, cost, results);
-		return "examinationType";
-	}
+		this.indicators = Arrays.asList(indicatorNames.split("\\s*,\\s*"));
+		this.examinationType = new ExaminationType(this.name, this.description, this.cost);
+		examinationType.setIndicators(indicators);
+		examinationTypeFacade.createExaminationType(this.examinationType);
 
-	public String getResultName() {
-		return this.resultName;
+		// reset some fields
+		this.indicatorNames = "";
+		return "examinationTypeList";
+	}
+	public String getIndicatorNames() {
+		return this.indicatorNames;
 	}
 	
-	public void setResultName(String resultName) {
-		this.resultName = resultName;
+	public void setIndicatorNames(String indicatorNames) {
+		this.indicatorNames = indicatorNames;
 	}
 	
 	public String getName() {
@@ -75,21 +77,13 @@ public class ExaminationTypeController {
 	public void setExaminationType(ExaminationType examinationType) {
 		this.examinationType = examinationType;
 	}
-
-	public List<ExaminationResult> getResults() {
-		return results;
-	}
-
-	public void setResults(List<ExaminationResult> results) {
-		this.results = results;
-	}
 	
 	public List<ExaminationType> getExaminationTypeList() {
 		return this.examinationTypeList;
 	}
 	
-	public String examinationTypeList() {
-		this.examinationTypeList = typeFacade.findAll();
+	public String takeExaminationTypeList() {
+		this.examinationTypeList = examinationTypeFacade.findAll();
 		
 		return "examinationsList";
 	}
@@ -97,15 +91,13 @@ public class ExaminationTypeController {
 	public void setExaminationTypeList(List<ExaminationType> examinationTypeList) {
 		this.examinationTypeList = examinationTypeList;
 	}
-	// useful methods
 	
-	public String insertExaminationResult() {
-		this.examinationType = (ExaminationType) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("examinationType");
-		examinationResult = new ExaminationResult(resultName, " ");
-		this.results.add(examinationResult);
-		
-		
-		return "newExaminationType";
+	public List<String> getIndicators() {
+		return indicators;
+	}
+	
+	public void setIndicators(List<String> indicators) {
+		this.indicators = indicators;
 	}
 
 }

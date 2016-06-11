@@ -20,39 +20,35 @@
 				
 				<f:view>
 				<h:form>
-
-				<div>Nome: <h:inputText value = "#{ExaminationTypeController.name}"
-					required="true"
-                 	requiredMessage="Nome obbligatorio" id="name"/> <h:message for="name" />
-				</div>
-					
-				<div>Descrizione: <h:inputText value = "#{ExaminationTypeController.description}"
-					required="true"
-                 	requiredMessage="Descrizione obbligatoria" id="description"/> <h:message for="description" />
+				
+				<div align="center">
+					Nome Tipologia: <h:inputText value="#{ExaminationTypeController.name}" required="true"
+					requiredMessage="Nome Tipologia Esame obbligatorio!" id="TypeName"/>
 				</div>
 				
-				<div>Costo: <h:inputText value = "#{ExaminationTypeController.cost}"
-					required="true"
-                 	requiredMessage="Costo obbligatorio" id="cost"/> <h:message for="cost" />
-				</div>	
+				<div align="center">
+					Prezzo: <h:inputText value="#{ExaminationTypeController.cost}" required="true"
+					requiredMessage="Specificare un costo" id="TypeCost"/>
+				</div>
 				
-				<div>Nome indicatore: <h:inputText value="#{ExaminationTypeController.resultName}"/></div>
-				<br>
-				
-				<div><h:commandButton value="Aggiungi" 
-					action="#{ExaminationTypeController.insertExaminationResult}"/></div>
-				
+				<div align="center">
+					Descrizione Tipologia: <h:inputText value="#{ExaminationTypeController.description}" required="true"
+					requiredMessage="E' richiesta una descrizione" id="TypeDescription"/>
+				</div>
 				<br><br>
-				<div><h:commandButton value="Crea Tipologia" action="#{ExaminationTypeController.createExaminationType}"/></div>
-
-				</h:form>
-				</f:view>
-
-		
+				<div align="center">
+					Nomi degli indicatori, separati da una virgola: 
+					<h:inputText value="#{ExaminationTypeController.indicatorNames}" required="true"
+					requiredMessage="Specificare almeno un indicatore" id="IndicatorNames"/>
+				</div>
+				<br><br>
+				<div align="center">
+					<h:commandButton value="Crea tipologia" action="#{ExaminationTypeController.createExaminationType}"/>
+				</div>
+			</h:form>
+			</f:view>
+			<h2> <a href="index.jsp">Torna alla Homepage</a> </h2>
 		</header>
 		</div>
-	<center>
-		<h3><a href="administrationArea.jsp">Torna all'area amministrativa</a></h3>
-	</center>
-</body>
+	</body>
 </html>

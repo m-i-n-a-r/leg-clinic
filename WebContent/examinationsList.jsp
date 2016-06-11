@@ -23,7 +23,7 @@
 				</c:forEach>
 			</h:form>
 		</f:view>
-		<a href="index.html">Torna alla Homepage</a>
+		<a href="index.jsp">Torna alla Homepage</a>
 		</header>
 	</div>
 </body>

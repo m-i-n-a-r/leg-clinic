@@ -8,7 +8,6 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 import it.leg.model.Condition;
-import it.leg.model.ExaminationResult;
 import it.leg.model.ExaminationType;
 
 
@@ -18,8 +17,8 @@ public class ExaminationTypeFacade {
 	@PersistenceContext(unitName = "legClinic")
 	private EntityManager em;
 
-	public ExaminationType createExaminationType(String name, String description, Float cost, List<ExaminationResult> results){	
-		ExaminationType examinationType = new ExaminationType(name, description, cost, results);
+	
+	public ExaminationType createExaminationType(ExaminationType examinationType){	
 		em.persist(examinationType);
 		return examinationType;
 	}
@@ -32,7 +31,7 @@ public class ExaminationTypeFacade {
 		em.merge(type);
 	}
 
-	public ExaminationType findByPrimaryKey(String id) {
+	public ExaminationType findByPrimaryKey(Long id) {
 		ExaminationType type = em.find(ExaminationType.class, id);
 		return type ;
 	}
@@ -41,18 +40,18 @@ public class ExaminationTypeFacade {
 		Query query = em.createQuery("SELECT e FROM ExaminationType e");
 		return (List<ExaminationType>) query.getResultList();	
 	}
-	
-	public ExaminationType find(String name){
-		ExaminationType type = em.find(ExaminationType.class, "name");
-		return type;
+
+	public List<String> addIndicator(ExaminationType type, String indicator) {
+		List<String> indicators = type.getIndicators();
+		indicators.add(indicator);
+		type.setIndicators(indicators);
+		return indicators;
 	}
+
 	public List<Condition> addCondition(ExaminationType type, Condition condition) {
 		List<Condition> preconditions = type.getPreconditions();
-		
 		preconditions.add(condition);
-		
 		type.setPreconditions(preconditions);
-		
 		return preconditions;
 	}
 }

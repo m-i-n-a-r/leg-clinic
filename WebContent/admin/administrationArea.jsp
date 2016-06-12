@@ -32,14 +32,14 @@
 	<br>
 	<center>
 		
-		<h1><a href="newExaminationType.jsp">Amplia offerta</a></h1>
-		<h1><a href="newExamination.jsp">Nuovo esame</a></h1>
-		<h1><a href="newCondition.jsp">Nuovo requisito</a></h1>
-		<h1><a href="newExamResult.jsp">Inserisci risultati</a></h1>
-		<h1><a href="newPatient.jsp">Nuovo paziente</a></h1>
-		<h1><a href="newDoctor.jsp">Nuovo medico</a></h1>
-		<h1><a href="newAdmin.jsp">Nuovo admin</a></h1>
-		<h1><a href="searchDoctor.jsp">Cerca esami per medico</a></h1>
+		<h1><a href="faces/admin/newExaminationType.jsp">Amplia offerta</a></h1>
+		<h1><a href="faces/admin/newExamination.jsp">Nuovo esame</a></h1>
+		<h1><a href="faces/admin/newCondition.jsp">Nuovo requisito</a></h1>
+		<h1><a href="faces/admin/newExamResult.jsp">Inserisci risultati</a></h1>
+		<h1><a href="faces/admin/newPatient.jsp">Nuovo paziente</a></h1>
+		<h1><a href="faces/admin/newDoctor.jsp">Nuovo medico</a></h1>
+		<h1><a href="faces/admin/newAdmin.jsp">Nuovo admin</a></h1>
+		<h1><a href="faces/admin/searchDoctor.jsp">Cerca esami per medico</a></h1>
 		<br>
 		<h1><a href="../faces/login.jsp">Log out</a></h1>
 	</center>

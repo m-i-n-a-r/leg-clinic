@@ -21,6 +21,7 @@ public class ExaminationTypeController {
     
 	@EJB(beanName = "ExaminationTypeFacade")
 	private ExaminationTypeFacade examinationTypeFacade;
+	@EJB
 	private ConditionFacade conditionFacade;
 	
 	private String name;
@@ -39,9 +40,7 @@ public class ExaminationTypeController {
 		this.indicators = Arrays.asList(indicatorNames.split("\\s*,\\s*"));
 		this.examinationType = new ExaminationType(this.name, this.description, this.cost);
 		examinationType.setIndicators(indicators);
-		//condition.setName(this.conditionName);
-        //condition.setDescription(this.conditionDescr);
-        //examinationType.addCondition( condition);
+		
         this.condition= conditionFacade.createCondition(conditionName, conditionDescr);
         this.conditions= examinationTypeFacade.addCondition(examinationType, condition);
        

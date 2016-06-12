@@ -34,7 +34,7 @@ public class LoginController {
 				this.setAdmin(this.adminFacade.findByEmail(email));
 					
 				if (this.admin.getPassword().equals(password))
-					return "administrationArea";
+					return "admin/administrationArea";
 				else
 					return "error";
 			}
@@ -42,7 +42,7 @@ public class LoginController {
 				this.setPatient(this.patientFacade.findByEmail(email));
 					
 				if (this.patient.getPassword().equals(password)) 
-					return "personalArea";
+					return "user/personalArea";
 				else
 					return "error";
 			}

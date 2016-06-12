@@ -8,7 +8,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="stylesheet" href="assets/css/main.css" />
+<link rel="stylesheet" href="../assets/css/main.css" />
 <title>Area amministrativa</title>
 </head>
 <body>
@@ -41,7 +41,7 @@
 		<h1><a href="newAdmin.jsp">Nuovo admin</a></h1>
 		<h1><a href="searchDoctor.jsp">Cerca esami per medico</a></h1>
 		<br>
-		<h1><a href="login.jsp">Log out</a></h1>
+		<h1><a href="../faces/login.jsp">Log out</a></h1>
 	</center>
 </body>
 </html>

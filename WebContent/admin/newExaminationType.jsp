@@ -55,7 +55,7 @@
 				</div>
 			</h:form>
 			</f:view>
-			<h2> <a href="index.jsp">Torna alla Homepage</a> </h2>
+			<h2> <a href="../index.jsp">Torna alla Homepage</a> </h2>
 		</header>
 		</div>
 	</body>

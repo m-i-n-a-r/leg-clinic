@@ -35,6 +35,14 @@
 					Descrizione Tipologia: <h:inputText value="#{ExaminationTypeController.description}" required="true"
 					requiredMessage="E' richiesta una descrizione" id="TypeDescription"/>
 				</div>
+				<div align="center">
+					Nome prerequisito: <h:inputText value="#{ExaminationTypeController.conditionName}" required="true"
+					requiredMessage="Inserire nome prerequisito" id="ConditionName"/>
+				</div>
+				<div align="center">
+					Descrizione prerequisito: <h:inputText value="#{ExaminationTypeController.conditionDescr}" required="true"
+					requiredMessage="E' richiesta una descrizione" id="ConditionDescr"/>
+				</div>
 				<br><br>
 				<div align="center">
 					Nomi degli indicatori, separati da una virgola: 

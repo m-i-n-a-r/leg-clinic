@@ -1,39 +1,54 @@
 package it.leg.controller;
 
 import java.util.Arrays;
+import java.util.LinkedList;
 import java.util.List;
 
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
+import it.leg.facade.ConditionFacade;
 import it.leg.facade.ExaminationTypeFacade;
+import it.leg.model.Condition;
 import it.leg.model.ExaminationType;
 
 
 @ManagedBean (name = "ExaminationTypeController")
 @SessionScoped
 public class ExaminationTypeController {
-
+   
+    
 	@EJB(beanName = "ExaminationTypeFacade")
 	private ExaminationTypeFacade examinationTypeFacade;
+	private ConditionFacade conditionFacade;
 	
 	private String name;
 	private String description;
 	private Float cost;
 	private List<String> indicators;
 	private String indicatorNames;
-	
+	private String conditionName;
+	private String conditionDescr;
 	private ExaminationType examinationType;
 	private List<ExaminationType> examinationTypeList;
-//	private List<Condition> conditions;
+	private List<Condition> conditions;
+	private Condition condition;
 	
 	public String createExaminationType() {
 		this.indicators = Arrays.asList(indicatorNames.split("\\s*,\\s*"));
 		this.examinationType = new ExaminationType(this.name, this.description, this.cost);
 		examinationType.setIndicators(indicators);
+		//condition.setName(this.conditionName);
+        //condition.setDescription(this.conditionDescr);
+        //examinationType.addCondition( condition);
+        this.condition= conditionFacade.createCondition(conditionName, conditionDescr);
+        this.conditions= examinationTypeFacade.addCondition(examinationType, condition);
+       
 		examinationTypeFacade.createExaminationType(this.examinationType);
-
+          
+               
+         
 		// reset some fields
 		this.indicatorNames = "";
 		return "examinationTypeList";
@@ -99,5 +114,19 @@ public class ExaminationTypeController {
 	public void setIndicators(List<String> indicators) {
 		this.indicators = indicators;
 	}
+	public String getconditionDescr() {
+        return conditionDescr;
+  }
 
+  public void setconditionDescr(String conditionDescr) {
+        this.conditionDescr = conditionDescr;
+  }
+
+  public String getconditionName() {
+        return conditionName;
+  }
+
+  public void setconditionName(String conditionName) {
+        this.conditionName = conditionName;
+  }
 }

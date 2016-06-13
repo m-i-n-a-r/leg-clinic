@@ -30,12 +30,12 @@ public class ExaminationType {
 	private Float cost;
 
 	@ElementCollection
-	@CollectionTable(name="Indicators", joinColumns=@JoinColumn(name="examinationType_id"))
+	@CollectionTable(name="Indicator", joinColumns=@JoinColumn(name="examinationType_id"))
 	@Column(name="name", nullable = false)
 	private List<String> indicators;
 	
 	@OneToMany(fetch = FetchType.LAZY)
-	@JoinColumn(name ="condition_id")
+	@JoinColumn(name ="type_id")
 	public List<Condition> preconditions;
 	
 

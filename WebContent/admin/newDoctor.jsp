@@ -17,6 +17,7 @@
 			<h1>
 				<font>Inserisci un nuovo medico della clinica</font>
 			</h1><br>
+			
 				<f:view>
 				<h:form>
 				<div>Nome: <h:inputText value = "#{DoctorController.name}"
@@ -33,14 +34,13 @@
 					required="true"
                  	requiredMessage="Specializzazione obbligatoria" id="specialization"/> <h:message for="specialization" />
 				</div>	
-				
-				<div><h:commandButton value="Submit"  action="#{DoctorController.createDoctor}"/></div>
+				<br><br>
+				<div><h:commandButton value="Inserisci medico"  action="#{DoctorController.createDoctor}"/></div>
 				</h:form>
 				</f:view>
 		</header>
 		</div>
-	<center>
+
 		<h3><a href="administrationArea.jsp">Torna all'area amministrativa</a></h3>
-	</center>
 </body>
 </html>

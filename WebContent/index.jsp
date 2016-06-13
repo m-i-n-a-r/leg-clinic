@@ -50,7 +50,7 @@
 						<a href="#" class="image icon fa-question"><img src="images/pic03.jpg" alt="" /></a>
 						<div class="content">
 							<h3>Chi siamo?</h3>
-							<p>Se vuoi saperne di piÃ¹ sulle nostre origini, non ti resta che 
+							<p>Se vuoi conoscere le nostre origini, non ti resta che 
 							visitare questa pagina</p>
 						</div>
 					</section>

@@ -13,7 +13,7 @@
 <body>
 	<f:view>
 		<h:form>
-			<h:commandButton value="Invia" action="#{ExaminationTypeController.takeExaminationTypeList}" styleClass="btn btn-lg btn-primary btn-block"/>
+			<h:commandButton value="Mostra" action="#{ExaminationTypeController.takeExaminationTypeList}" styleClass="btn btn-lg btn-primary btn-block"/>
 		</h:form>
 	</f:view>
 </body>

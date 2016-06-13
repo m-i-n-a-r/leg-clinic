@@ -23,7 +23,7 @@
 		<center>
 			<f:view>
 				<h:form>
-					<h:outputText value="#{LoginController.email}" />
+					<b>Email: </b><h:outputText value="#{LoginController.email}" />
 				</h:form>
 			</f:view>
 		</center>
@@ -32,14 +32,14 @@
 	<br>
 	<center>
 		
-		<h1><a href="faces/admin/newExaminationType.jsp">Amplia offerta</a></h1>
-		<h1><a href="faces/admin/newExamination.jsp">Nuovo esame</a></h1>
-		<h1><a href="faces/admin/newCondition.jsp">Nuovo requisito</a></h1>
-		<h1><a href="faces/admin/newExamResult.jsp">Inserisci risultati</a></h1>
-		<h1><a href="faces/admin/newPatient.jsp">Nuovo paziente</a></h1>
-		<h1><a href="faces/admin/newDoctor.jsp">Nuovo medico</a></h1>
-		<h1><a href="faces/admin/newAdmin.jsp">Nuovo admin</a></h1>
-		<h1><a href="faces/admin/searchDoctor.jsp">Cerca esami per medico</a></h1>
+		<a href="../faces/admin/newExaminationType.jsp">Amplia offerta</a><br>
+		<a href="../faces/admin/newExamination.jsp">Nuova prenotazione esame</a><br>
+		<a href="../faces/admin/newResults.jsp">Inserisci risultati esame</a><br>
+		<a href="../faces/admin/searchDoctor.jsp">Cerca esami per medico</a><br>
+		<a href="../faces/admin/newPatient.jsp">Nuovo paziente</a><br>
+		<a href="../faces/admin/newDoctor.jsp">Nuovo medico</a><br>
+		<a href="../faces/admin/newAdmin.jsp">Nuovo admin</a><br>
+		
 		<br>
 		<h1><a href="../faces/login.jsp">Log out</a></h1>
 	</center>

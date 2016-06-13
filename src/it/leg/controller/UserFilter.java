@@ -42,7 +42,7 @@ public class UserFilter implements Filter {
 			String nextPage = "/faces/login.jsp";
 			nextPage = res.encodeURL(nextPage);
 			RequestDispatcher rd = this.application.getRequestDispatcher(nextPage);
-			rd.forward(request, response);
+			rd.forward(req, res);
 		}
 
 		chain.doFilter(request, response);

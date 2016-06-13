@@ -15,7 +15,7 @@
 	<div id="main">
 	<header class="major container 75%">
 			<h1>
-				<font>Inserisci un nuovo admin del sistema</font>
+				<font>Inserisci un nuovo amministratore di sistema</font>
 			</h1><br>
 				<f:view>
 				<h:form>
@@ -26,7 +26,7 @@
 					
 				<div>Nome: <h:inputText value = "#{AdminController.name}"
 					required="true"
-                 	requiredMessage="Mome obbligatorio" id="name"/> <h:message for="name" />
+                 	requiredMessage="Nome obbligatorio" id="name"/> <h:message for="name" />
 				</div>
 				
 				<div>Cognome: <h:inputText value = "#{AdminController.surname}"
@@ -38,8 +38,8 @@
 					required="true"
                  	requiredMessage="Password obbligatoria" id="password"/> <h:message for="password" />
 				</div>	
-				
-				<div><h:commandButton value="Submit"  action="#{AdminController.createAdmin}"/></div>
+				<br><br>
+				<div><h:commandButton value="Crea amministratore"  action="#{AdminController.createAdmin}"/></div>
 				</h:form>
 				</f:view>
 		</header>

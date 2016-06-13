@@ -19,7 +19,6 @@
 			<h1>
 				<font>Benvenuto nell'area personale</font>
 			</h1><br>
-			<h2>Ecco i tuoi dati personali</h2>
 		</center>
 		<center>
 			<f:view>
@@ -29,10 +28,14 @@
 			</f:view>
 		</center>
 		</header>
+		
 	</div>
 	<br>
 	<center>
-		<h3><a href="../faces/login.jsp">Log out</a></h3>
+		<a href="../faces/examinationTypeList.jsp">Consulta offerta</a>
+		
+		<br>
+		<h2><a href="../faces/login.jsp">Log out</a></h2>
 	</center>
 </body>
 </html>

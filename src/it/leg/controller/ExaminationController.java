@@ -1,64 +1,109 @@
 package it.leg.controller;
 
-import java.io.IOException;
-
 import javax.ejb.EJB;
-import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletContext;
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 
-import org.apache.commons.validator.routines.DateValidator;
-
+import it.leg.facade.DoctorFacade;
 import it.leg.facade.ExaminationFacade;
+import it.leg.facade.ExaminationTypeFacade;
+import it.leg.facade.PatientFacade;
 import it.leg.model.Doctor;
 import it.leg.model.Examination;
 import it.leg.model.ExaminationType;
 import it.leg.model.Patient;
 
-@WebServlet("/ExaminationController")
-public class ExaminationController extends HttpServlet {
-	private static final long serialVersionUID = 1L;
+
+@ManagedBean (name = "ExaminationController")
+@SessionScoped
+public class ExaminationController {
 
 	@EJB(beanName = "ExaminationFacade")
-	private ExaminationFacade facade;
-
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//		ExaminationHelper helper = new ExaminationHelper();	
-		String nextPage= "/newExamination.jsp";
-//
-//		if (helper.validate(request)){
-//			Examination examination = new Examination();
-//
-//			String patientName = request.getParameter("patient");
-//			Patient patient = new Patient();
-//			patient.setName(patientName);
-//			examination.setPatient(patient);
-//
-//			String examinationTypeName = request.getParameter("type");
-//			ExaminationType examinationType = new ExaminationType();
-//			examinationType.setName(examinationTypeName);
-//			examination.setType(examinationType);
-//
-//			String doctorName = request.getParameter("doctor");
-//			Doctor doctor = new Doctor();
-//			doctor.setName(doctorName);
-//			examination.setDoctor(doctor);
-//
-//			DateValidator dateValidator = new DateValidator();
-//			examination.setReservationDate(dateValidator.validate(request.getParameter("dataEsame")));
-//
-//
-//			facade.createExamination(examinationType, patient, doctor);
-//			request.setAttribute("examination", examination);
-//			nextPage = "/examination.jsp";
-//		}
-
-		ServletContext servletContext = getServletContext();
-		RequestDispatcher rd = servletContext.getRequestDispatcher(nextPage);
-		rd.forward(request, response);
+	private ExaminationFacade examinationFacade;
+	
+	@EJB(beanName = "DoctorFacade")
+	private DoctorFacade doctorFacade;
+	
+	@EJB(beanName = "PatientFacade")
+	private PatientFacade patientFacade;
+	
+	@EJB(beanName = "ExaminationTypeFacade")
+	private ExaminationTypeFacade examinationTypeFacade;
+	
+	private String doctorSurname;
+	private String examinationTypeName;
+	private String patientName;
+	
+	private Examination examination;
+	private Doctor doctor;
+	private Patient patient;
+	private ExaminationType examinationType;
+	
+	public String createExamination() {
+		
+		doctor = doctorFacade.findBySurname(doctorSurname);
+		patient = patientFacade.findByName(patientName);
+		examinationType = examinationTypeFacade.findByName(examinationTypeName);
+		examination = new Examination(examinationType, patient, doctor);
+		examinationFacade.createExamination(examination);
+		
+		return "administrationArea";
 	}
+
+	public ExaminationType getExaminationType() {
+		return examinationType;
+	}
+
+	public void setExaminationType(ExaminationType examinationType) {
+		this.examinationType = examinationType;
+	}
+
+	public Examination getExamination() {
+		return examination;
+	}
+
+	public void setExamination(Examination examination) {
+		this.examination = examination;
+	}
+
+	public Doctor getDoctor() {
+		return doctor;
+	}
+
+	public void setDoctor(Doctor doctor) {
+		this.doctor = doctor;
+	}
+
+	public Patient getPatient() {
+		return patient;
+	}
+
+	public void setPatient(Patient patient) {
+		this.patient = patient;
+	}
+
+	public String getDoctorSurname() {
+		return doctorSurname;
+	}
+
+	public void setDoctorSurname(String doctorSurname) {
+		this.doctorSurname = doctorSurname;
+	}
+
+	public String getExaminationTypeName() {
+		return examinationTypeName;
+	}
+
+	public void setExaminationTypeName(String examinationTypeName) {
+		this.examinationTypeName = examinationTypeName;
+	}
+
+	public String getPatientName() {
+		return patientName;
+	}
+
+	public void setPatientName(String patientName) {
+		this.patientName = patientName;
+	}
+	
 }

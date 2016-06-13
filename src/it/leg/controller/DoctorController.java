@@ -27,7 +27,7 @@ public class DoctorController {
 	public String createDoctor() {
 		this.doctor = facade.createDoctor(name, surname, specialization);
 
-		return "examinationType";
+		return "administrationArea";
 	}
 	
 	public String getName() {

@@ -28,7 +28,7 @@ public class AdminController {
 	public String createAdmin() {
 		this.admin = facade.createAdmin(name, surname, email, password);
 
-		return "examinationType";
+		return "administrationArea";
 	}
 	
 	public String getName() {

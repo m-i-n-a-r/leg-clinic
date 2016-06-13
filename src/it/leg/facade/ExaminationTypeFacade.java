@@ -36,6 +36,20 @@ public class ExaminationTypeFacade {
 		return type ;
 	}
 
+	public ExaminationType findByName(String name){
+		Query queryCF = em.createQuery("SELECT OBJECT(e) FROM ExaminationType AS e WHERE e.name=?1");
+		queryCF.setParameter(1, name);
+		
+		List<ExaminationType> examinationTypes  = queryCF.getResultList();
+		if (examinationTypes.isEmpty()) {
+			return null;
+		} 
+		else {
+			ExaminationType examinationType = (ExaminationType)examinationTypes.get(0);
+			return examinationType;
+		}
+	}
+	
 	public List<ExaminationType> findAll() {
 		Query query = em.createQuery("SELECT e FROM ExaminationType e");
 		return (List<ExaminationType>) query.getResultList();	

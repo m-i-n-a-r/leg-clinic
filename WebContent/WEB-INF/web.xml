@@ -14,7 +14,7 @@
     <url-pattern>/faces/*</url-pattern>
   </servlet-mapping>
   
-  <filter>
+  <!-- <filter>
     <filter-name>login-filter</filter-name>
     <filter-class>it.leg.controller.UserFilter</filter-class>
   </filter>
@@ -32,5 +32,5 @@
   <filter-mapping>
     <filter-name>admin-filter</filter-name>
     <url-pattern>/faces/admin/*</url-pattern>
-  </filter-mapping>
+  </filter-mapping> -->
 </web-app>

@@ -8,7 +8,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="stylesheet" href="assets/css/main.css" />
+<link rel="stylesheet" href="../assets/css/main.css" />
 <title>Amplia offerta</title>
 </head>
 <body>
@@ -23,31 +23,31 @@
 				
 				<div align="center">
 					Nome Tipologia: <h:inputText value="#{ExaminationTypeController.name}" required="true"
-					requiredMessage="Nome Tipologia Esame obbligatorio!" id="TypeName"/>
+					requiredMessage="Nome Tipologia Esame obbligatorio!" id="typeName"/> <h:message for="typeName" />
 				</div>
 				
 				<div align="center">
 					Prezzo: <h:inputText value="#{ExaminationTypeController.cost}" required="true"
-					requiredMessage="Specificare un costo" id="TypeCost"/>
+					requiredMessage="Specificare un costo" id="typeCost"/> <h:message for="typeCost" />
 				</div>
 				
 				<div align="center">
 					Descrizione Tipologia: <h:inputText value="#{ExaminationTypeController.description}" required="true"
-					requiredMessage="E' richiesta una descrizione" id="TypeDescription"/>
+					requiredMessage="E' richiesta una descrizione" id="typeDescription"/> <h:message for="typeDescription" />
 				</div>
 				<div align="center">
 					Nome prerequisito: <h:inputText value="#{ExaminationTypeController.conditionName}" required="true"
-					requiredMessage="Inserire nome prerequisito" id="ConditionName"/>
+					requiredMessage="Inserire nome prerequisito" id="conditionName"/> <h:message for="conditionName" />
 				</div>
 				<div align="center">
 					Descrizione prerequisito: <h:inputText value="#{ExaminationTypeController.conditionDescr}" required="true"
-					requiredMessage="E' richiesta una descrizione" id="ConditionDescr"/>
+					requiredMessage="E' richiesta una descrizione" id="conditionDescr"/> <h:message for="conditionDescr" />
 				</div>
 				<br><br>
 				<div align="center">
 					Nomi degli indicatori, separati da una virgola: 
 					<h:inputText value="#{ExaminationTypeController.indicatorNames}" required="true"
-					requiredMessage="Specificare almeno un indicatore" id="IndicatorNames"/>
+					requiredMessage="Specificare almeno un indicatore" id="indicatorNames"/> <h:message for="indicatorNames" />
 				</div>
 				<br><br>
 				<div align="center">
@@ -55,7 +55,7 @@
 				</div>
 			</h:form>
 			</f:view>
-			<h2> <a href="../index.jsp">Torna alla Homepage</a> </h2>
+			<h2><a href="administrationArea.jsp">Torna all'area amministrativa</a></h2>
 		</header>
 		</div>
 	</body>

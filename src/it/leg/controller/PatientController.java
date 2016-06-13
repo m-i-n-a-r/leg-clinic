@@ -28,7 +28,7 @@ public class PatientController {
 	public String createPatient() {
 		this.patient = facade.createPatient(name, surname, email, password);
 
-		return "examinationType";
+		return "administrationArea";
 	}
 	
 	public String getName() {

@@ -34,14 +34,23 @@ public class DoctorFacade {
 		return doctor;
 	}
 	
+	public Doctor findBySurname(String surname){
+		Query queryCF = em.createQuery("SELECT OBJECT(d) FROM Doctor AS d WHERE d.surname=?1");
+		queryCF.setParameter(1, surname);
+		
+		List<Doctor> doctors = queryCF.getResultList();
+		if (doctors.isEmpty()) {
+			return null;
+		} 
+		else {
+			Doctor doctor = (Doctor)doctors.get(0);
+			return doctor;
+		}
+	}
+	
 	public List<Doctor> findAll(){
 		Query query = em.createQuery("SELECT d FROM  Doctor d");
 		return (List<Doctor>) query.getResultList();	
-	}
-	
-	public Doctor find(String name){
-		Doctor doctor = em.find(Doctor.class, name);
-		return doctor;
 	}
 
 }

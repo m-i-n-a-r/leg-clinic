@@ -18,8 +18,7 @@ public class ExaminationFacade {
 	@PersistenceContext(unitName = "legClinic")
 	private EntityManager em;
 	
-	public Examination createExamination(ExaminationType type, Patient patient, Doctor doctor) {	
-		Examination examination= new Examination( type,patient,doctor);
+	public Examination createExamination(Examination examination) {	
 		em.persist(examination);
 		return examination;
 	}
@@ -35,6 +34,12 @@ public class ExaminationFacade {
 	public Examination findByPrimaryKey(Long id) {
 		Examination examination= em.find(Examination.class, id);
 		return examination ;
+	}
+	
+	// TODO - find every exam associated with a doctor
+	
+	public List<Examination> findByDoctor(String DoctorId) {
+		return null;
 	}
 	
 	public List<Examination> findAll() {

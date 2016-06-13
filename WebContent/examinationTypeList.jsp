@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="f"  uri="http://java.sun.com/jsf/core"%>
 <%@ taglib prefix="h"  uri="http://java.sun.com/jsf/html"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
@@ -7,14 +6,20 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<!-- should be embedded in main button -->
-<title>Mostra esami</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" href="assets/css/main.css" />
+<title>Esami disponibili - LegClinic</title>
 </head>
 <body>
-	<f:view>
-		<h:form>
-			<h:commandButton value="Mostra" action="#{ExaminationTypeController.takeExaminationTypeList}" styleClass="btn btn-lg btn-primary btn-block"/>
-		</h:form>
-	</f:view>
+	<h1 align="center">Qui puoi visalizzare la nostra offerta</h1>
+	<div id="main">
+	    <header class="major container 75%">
+			<f:view>
+				<h:form>
+					<h:commandButton value="Mostra" action="#{ExaminationTypeController.takeExaminationTypeList}" styleClass="btn btn-lg btn-primary btn-block"/>
+				</h:form>
+			</f:view>
+		</header>
+	</div>
 </body>
 </html>

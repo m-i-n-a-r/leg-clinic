@@ -7,6 +7,8 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
+import org.hibernate.Criteria;
+
 import it.leg.model.Doctor;
 import it.leg.model.Examination;
 import it.leg.model.ExaminationType;
@@ -32,19 +34,21 @@ public class ExaminationFacade {
 	}
 	
 	public Examination findByPrimaryKey(Long id) {
-		Examination examination= em.find(Examination.class, id);
-		return examination ;
-	}
-	
-	// TODO - find every exam associated with a doctor
-	
-	public List<Examination> findByDoctor(String DoctorId) {
-		return null;
+		Examination examination = em.find(Examination.class, id);
+		return examination;
 	}
 	
 	public List<Examination> findAll() {
-		Query query = em.createQuery("SELECT e FROM Esame e");
+		Query query = em.createQuery("SELECT e FROM Examination e");
 	    return (List<Examination>) query.getResultList();	
+	}
+	
+
+	public List<Examination> findAllExamsByDoctor(Long DoctorId) {
+		Query q = em.createQuery("SELECT OBJECT(ep) FROM Examination AS ep WHERE ep.doctor_id=?1");
+		q.setParameter(1, DoctorId);
+		List<Examination> exams = q.getResultList();
+		return exams;
 	}
 	
 }

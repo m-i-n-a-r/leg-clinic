@@ -82,5 +82,9 @@ public class Doctor {
 	public void addExamination(Examination examination) {
 		this.examinations.add(examination);
 	}
+	
+	public Long getId() {
+		return this.id;
+	}
 
 }

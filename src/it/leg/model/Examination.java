@@ -1,5 +1,8 @@
 package it.leg.model;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import javax.persistence.Entity;
@@ -7,6 +10,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
@@ -38,8 +42,22 @@ public class Examination {
 		this.type = type;
 		this.patient = patient;
 		this.doctor = doctor;
-		this.reservationDate = new Date();
-		this.examinationDate = new Date();
+		
+		DateFormat df1 = new SimpleDateFormat("dd/MM/yyyy 'at' HH:mm:ss");
+		String data = df1.format(new Date());
+		
+		try {
+			this.reservationDate = df1.parse(data);
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			this.examinationDate = df1.parse(data);
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	// Getters e Setters

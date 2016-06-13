@@ -2,6 +2,7 @@
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="f"  uri="http://java.sun.com/jsf/core"%>
 <%@ taglib prefix="h"  uri="http://java.sun.com/jsf/html"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page import="it.leg.model.Admin"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -39,6 +40,12 @@
 		<a href="../faces/admin/newPatient.jsp">Nuovo paziente</a><br>
 		<a href="../faces/admin/newDoctor.jsp">Nuovo medico</a><br>
 		<a href="../faces/admin/newAdmin.jsp">Nuovo admin</a><br>
+		<f:view>
+			<h:form>
+				<h:commandLink value = "Lista Esami per Medico" action="#{DoctorController.takeDoctorList}"></h:commandLink>
+			</h:form>
+		</f:view>
+		
 		
 		<br>
 		<h1><a href="../faces/login.jsp">Log out</a></h1>

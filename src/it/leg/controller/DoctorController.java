@@ -1,6 +1,8 @@
 package it.leg.controller;
 
 
+import java.util.List;
+
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -23,6 +25,7 @@ public class DoctorController {
 	private String specialization;
 	
 	private Doctor doctor;
+	private List<Doctor> doctors;
 	
 	public String createDoctor() {
 		this.doctor = facade.createDoctor(name, surname, specialization);
@@ -69,5 +72,14 @@ public class DoctorController {
 	public void setDoctor(Doctor doctor) {
 		this.doctor = doctor;
 	}
-
+	
+	public List<Doctor> getDoctors() {
+		return this.doctors;
+	}
+	
+	public String takeDoctorList() {
+		this.doctors = this.facade.findAll();
+		
+		return "DoctorExaminationsList";
+	}
 }

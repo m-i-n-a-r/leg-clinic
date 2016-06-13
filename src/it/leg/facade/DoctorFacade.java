@@ -1,5 +1,6 @@
 package it.leg.facade;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.ejb.Stateless;
@@ -8,6 +9,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 import it.leg.model.Doctor;
+import it.leg.model.Patient;
 
 @Stateless(name = "DoctorFacade")
 public class DoctorFacade {
@@ -48,9 +50,23 @@ public class DoctorFacade {
 		}
 	}
 	
-	public List<Doctor> findAll(){
+	public List<Doctor> findAll() {
 		Query query = em.createQuery("SELECT d FROM  Doctor d");
 		return (List<Doctor>) query.getResultList();	
+	}
+	
+	public Long getIdBySurname(String surname) {
+		Query query = em.createQuery("SELECT OBJECT(d) FROM Doctor AS d WHERE d.surname=?1");
+		query.setParameter(1, surname);
+		
+		List<Doctor> doctors = query.getResultList();
+		if (doctors.isEmpty()) {
+			return null;
+		} 
+		else {
+			Doctor d = (Doctor)doctors.get(0);
+			return d.getId();
+		}
 	}
 
 }

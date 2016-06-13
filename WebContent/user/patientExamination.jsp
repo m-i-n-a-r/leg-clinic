@@ -3,40 +3,38 @@
 <%@ page import="it.leg.model.Doctor"%>
 <%@ taglib prefix="f"  uri="http://java.sun.com/jsf/core"%>
 <%@ taglib prefix="h"  uri="http://java.sun.com/jsf/html"%>
-<%@ page import="it.leg.model.Patient"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="stylesheet" href="../assets/css/main.css" />
-<title>Area Personale</title>
+<title>Consulta i tuoi esami</title>
 </head>
 <body>
 	<div id="main">
 	<header class="major container 75%">
-		<center>
 			<h1>
-				<font>Benvenuto nell'area personale</font>
+				<font>inserisci nome per visualizzare esami </font>
 			</h1><br>
-		</center>
-		<center>
+
 			<f:view>
-				<h:form>
-					<b>Email: </b><h:outputText value="#{LoginController.email}" />
-				</h:form>
+			<h:form>
+				
+				<div align="center">
+				
+				<div>nome: <h:inputText value = "#{ExaminationController.patientName}" required="true"
+                 	requiredMessage="nome obbligatorio" id="name"/> <h:message for="name" />
+				</div>	
+				<h:commandButton value="Mostra" action="#{ExaminationController.showpatientExamination}"></h:commandButton>
+			</h:form>
 			</f:view>
-		</center>
+				
 		</header>
-		
-	</div>
-	<br>
+		</div>
 	<center>
-		<a href="../faces/examinationTypeList.jsp">Consulta offerta</a>
-		<a href="../faces/user/patientExamination.jsp">Consulta i tuoi esami</a>
-		
-		<br>
-		<h2><a href="../faces/login.jsp">Log out</a></h2>
+		<h3><a href="personalArea.jsp">Torna all'area personale</a></h3>
 	</center>
 </body>
 </html>

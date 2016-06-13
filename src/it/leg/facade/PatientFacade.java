@@ -52,7 +52,19 @@ public class PatientFacade {
 			return patient;
 		}
 	}
-	
+	public Long getIdByname(String name) {
+	    Query query = em.createQuery("SELECT OBJECT(p) FROM Patient AS p WHERE p.name=?1");
+	    query.setParameter(1, name);
+	    
+	    List<Patient> patients = query.getResultList();
+	    if (patients.isEmpty()) {
+	      return null;
+	    } 
+	    else {
+	      Patient p = (Patient)patients.get(0);
+	      return p.getId();
+	    }
+	  }
 	public Patient findByEmail(String email) {
 		Query queryCF = em.createQuery("SELECT OBJECT(p) FROM Patient AS p WHERE p.email=?1");
 		queryCF.setParameter(1, email);

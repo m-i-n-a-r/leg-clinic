@@ -3,8 +3,13 @@ package it.leg.model;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
+import javax.persistence.CollectionTable;
+import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -38,10 +43,16 @@ public class Examination {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date examinationDate;
 
+	@ElementCollection(fetch = FetchType.EAGER)
+	@CollectionTable(name="Result", joinColumns=@JoinColumn(name="examination_id"))
+	@Column(name="name", nullable = false)
+	private List<String> results;
+
 	public Examination(ExaminationType type, Patient patient, Doctor doctor) {
 		this.type = type;
 		this.patient = patient;
 		this.doctor = doctor;
+		this.results = new ArrayList<>();
 		
 		DateFormat df1 = new SimpleDateFormat("dd/MM/yyyy 'at' HH:mm:ss");
 		String data = df1.format(new Date());
@@ -98,12 +109,20 @@ public class Examination {
 		this.examinationDate = examinationDate;
 	}
 	
-	public ExaminationType getType() {
+	public ExaminationType getExaminationType() {
 		return type;
 	}
 	
-	public void setType(ExaminationType type) {
+	public void setExaminationType(ExaminationType type) {
 		this.type = type;
+	}
+
+	public List<String> getResults() {
+		return results;
+	}
+
+	public void setResults(List<String> results) {
+		this.results = results;
 	}
 	
 }

@@ -1,6 +1,6 @@
 package it.leg.model;
 
-import java.util.LinkedList;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CollectionTable;
@@ -29,13 +29,13 @@ public class ExaminationType {
 	@Column(nullable = false)
 	private Float cost;
 
-	@ElementCollection
+	@ElementCollection(fetch = FetchType.EAGER)
 	@CollectionTable(name="Indicator", joinColumns=@JoinColumn(name="examinationType_id"))
 	@Column(name="name", nullable = false)
 	private List<String> indicators;
 	
 	@OneToMany(fetch = FetchType.LAZY)
-	@JoinColumn(name ="type_id")
+	@JoinColumn(name ="examinationType_id")
 	public List<Condition> preconditions;
 	
 
@@ -43,13 +43,13 @@ public class ExaminationType {
 		this.name = name;
 		this.description = description;
 		this.cost = cost;
-		this.indicators = new LinkedList<>();
-		this.preconditions = new LinkedList<>();
+		this.indicators = new ArrayList<>();
+		this.preconditions = new ArrayList<>();
 	}
 
 	public ExaminationType() {
-		this.preconditions = new LinkedList <Condition>();
-		this.indicators = new LinkedList<>();
+		this.preconditions = new ArrayList <Condition>();
+		this.indicators = new ArrayList<>();
 	}
 
 	// Getters e Setters

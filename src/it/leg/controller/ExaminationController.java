@@ -41,6 +41,7 @@ public class ExaminationController {
 	private Patient patient;
 	private ExaminationType examinationType;
 	private List<Examination> patientExamination;
+	
 	public String createExamination() {
 		
 		doctor = doctorFacade.findBySurname(doctorSurname);
@@ -51,6 +52,7 @@ public class ExaminationController {
 		
 		return "administrationArea";
 	}
+
 	public String showpatientExamination() {
 		Long id = patientFacade.getIdByname(patientName);	
 		if (id != null) {
@@ -60,6 +62,7 @@ public class ExaminationController {
 		
 		return "error";
 	}
+
 	public ExaminationType getExaminationType() {
 		return examinationType;
 	}
@@ -115,9 +118,11 @@ public class ExaminationController {
 	public void setPatientName(String patientName) {
 		this.patientName = patientName;
 	}
+
 	public List<Examination> getPatientExamination() {
 		return patientExamination;
 	}
+	
 	public void setPatientExamination(List<Examination> patientExamination) {
 		this.patientExamination = patientExamination;
 	}

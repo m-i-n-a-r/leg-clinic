@@ -21,6 +21,7 @@ public class ExaminationTypeController {
 
 	@EJB(beanName = "ExaminationTypeFacade")
 	private ExaminationTypeFacade examinationTypeFacade;
+	
 	@EJB
 	private ConditionFacade conditionFacade;
 
@@ -49,7 +50,9 @@ public class ExaminationTypeController {
 		// resets some fields
 		this.indicatorNames = "";
 		return "administrationArea";
+	
 	}
+
 	public String getIndicatorNames() {
 		return this.indicatorNames;
 	}
@@ -111,6 +114,7 @@ public class ExaminationTypeController {
 	public void setIndicators(List<String> indicators) {
 		this.indicators = indicators;
 	}
+
 	public String getconditionDescr() {
 		return conditionDescr;
 	}

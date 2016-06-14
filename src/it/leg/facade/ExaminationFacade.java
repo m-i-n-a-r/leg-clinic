@@ -44,20 +44,21 @@ public class ExaminationFacade {
 	}
 	
 
-	public List<Examination> findAllExamsByDoctor(Long DoctorId) {
-		Query q = em.createQuery("SELECT OBJECT(ep) FROM Examination AS ep WHERE ep.doctor_id=?1");
-		q.setParameter(1, DoctorId);
+	public List<Examination> findAllExamsByDoctor(Doctor doctor) {
+		Query q = em.createQuery("SELECT OBJECT(ep) FROM Examination AS ep WHERE ep.doctor=?1");
+		q.setParameter(1, doctor);
 		List<Examination> exams = q.getResultList();
 		return exams;
 	}
+	
 	public List<Examination> findAllbyId(Long id) {
-	    Query query = em.createQuery("SELECT e FROM examination AS e WHERE e.patient_id=?1");
-	    query.setParameter(1, id);
-	    
-	    List<Examination> examinations = query.getResultList();
-	    
-	      return examinations;
-	    }
+		Query query = em.createQuery("SELECT e FROM examination AS e WHERE e.patient=?1");
+		query.setParameter(1, id);
+
+		List<Examination> examinations = query.getResultList();
+
+		return examinations;
+	}
 	
 }
 

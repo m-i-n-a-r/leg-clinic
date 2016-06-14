@@ -25,13 +25,14 @@ public class DoctorExamsListController {
 	
 	private String surname;
 
+	private Doctor doctor;
 	private List<Examination> exams;
 	
 	public String showExams() {
-		Long id = doctorFacade.getIdBySurname(this.surname);
-		
-		if (id != null) {
-			this.exams = this.examinationFacade.findAllExamsByDoctor(id);
+		if (this.exists(this.surname)) {
+			this.setDoctor(doctorFacade.findBySurname(this.surname));
+			this.setExaminations(this.examinationFacade.findAllExamsByDoctor(this.doctor));
+			
 			return "DoctorExamsList";
 		}
 		
@@ -46,4 +47,23 @@ public class DoctorExamsListController {
 		this.surname = surname;
 	}
 	
+	public List<Examination> getExaminations() {
+		return this.exams;
+	}
+	
+	public void setExaminations(List<Examination> exams) {
+		this.exams = exams;
+	}
+	
+	public Doctor getDoctor() {
+		return this.doctor;
+	}
+	
+	public void setDoctor(Doctor doctor) {
+		this.doctor = doctor;
+	}
+	
+	public boolean exists(String surname) {
+		return !(this.doctorFacade.findBySurname(surname) == null);
+	}
 }

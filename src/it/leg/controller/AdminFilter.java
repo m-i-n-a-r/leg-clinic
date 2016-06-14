@@ -34,13 +34,12 @@ public class AdminFilter implements Filter {
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
 		// TODO Auto-generated method stub
 		// place your code here
-		HttpServletRequest req = (HttpServletRequest)request;
+		HttpServletRequest req = (HttpServletRequest) request;
 		HttpServletResponse res = (HttpServletResponse) response;
 		HttpSession session = req.getSession();
 		
-		if (session.getAttribute("admin") == null) {
-			String nextPage = "/faces/login.jsp";
-			nextPage = res.encodeURL(nextPage);
+		if ((session.getAttribute("user") == null) || (!session.getAttribute("user").equals("admin"))) {
+			String nextPage = "/faces/loginError.jsp";
 			RequestDispatcher rd = this.application.getRequestDispatcher(nextPage);
 			rd.forward(req, res);
 		}

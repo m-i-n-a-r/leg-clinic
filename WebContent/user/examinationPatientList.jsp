@@ -22,7 +22,7 @@
 		        <ul>
 				<c:forEach var="examination" items="#{ExaminationController.patientExamination}">
 					<div align="center">
-			     		<h:outputText value="#{examination.name}"/>
+			     		<h:outputText value="#{examination.type.name}"/>
 					</div>
 				</c:forEach>
 				</ul>

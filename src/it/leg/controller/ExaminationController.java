@@ -61,7 +61,20 @@ public class ExaminationController {
 		this.examinationTypeName = null;
 		return "administrationArea";
 	}
+	
+      public String showpatientExamination() {
+	    Long id = patientFacade.getIdByname(patientName);	
+		if (id != null) {
+			patientExamination = this.examinationFacade.findAllbyId(id);
+			return "examinationPatientList";
+		}
+		
+		return "error";
+	}
 
+	
+	
+	
 	public ExaminationType getExaminationType() {
 		return examinationType;
 	}
@@ -151,16 +164,8 @@ public class ExaminationController {
 		return "newFilling";
 	}
 	
-	public String showpatientExamination() {
-		Long id = patientFacade.getIdByname(patientName);	
-		if (id != null) {
-			this.patientExamination = this.examinationFacade.findAllbyId(id);
-			return "examinationPatientList";
-		}
-		
-		return "error";
+	
 	}
 
 
 	
-}

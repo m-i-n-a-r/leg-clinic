@@ -2,7 +2,6 @@ package it.leg.controller;
 
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import javax.ejb.EJB;
@@ -29,49 +28,38 @@ public class ExaminationResultController {
 	private List<String> results;
 	private List<String> values;
 	private List<String> indicators;
-	private String value;
 	private Long examinationId;
 	private Examination examination;
 	private ExaminationType examinationType;
 	
 
 	public String insertExaminationResult() {
-		
-		this.values = Arrays.asList(value.split("\\s*,\\s*"));
-		
 		int length = indicators.size();
-		if (length != values.size()) return "error"; // Too many results!
+		
+		// no indicators at all
+		if(length == 0) return "error";
 		
 		results = new ArrayList<String>(length);
 		for (int i = 0; i < length; i++) {
-		    results.add(indicators.get(i) + ": " + values.get(i));
+		    results.add(indicators.get(i) + values.get(i));
 		}
 		
 		this.examination.setResults(results);
 		examinationFacade.update(this.examination);
 		
+		// reset some fields
+		results = null;
+		indicators = null;
+		values = null;
 		return "administrationArea";
 	}
 	
-	public List<String> getIndicators() {
-		this.indicators = examinationType.getIndicators();	
-		return indicators;
-	}
-
 	public List<String> getResults() {
 		return results;
 	}
 
 	public void setResults(List<String> results) {
 		this.results = results;
-	}
-
-	public String getValue() {
-		return value;
-	}
-
-	public void setValue(String value) {
-		this.value = value;
 	}
 
 	public Examination getExamination() {
@@ -90,10 +78,6 @@ public class ExaminationResultController {
 		this.examinationType = examinationType;
 	}
 	
-	public void setIndicators(List<String> indicators) {
-		this.indicators = indicators;
-	}
-
 	public Long getExaminationId() {
 		return examinationId;
 	}
@@ -101,7 +85,16 @@ public class ExaminationResultController {
 	public void setExaminationId(Long examinationId) {
 		this.examinationId = examinationId;
 	}
-	
+
+
+	public List<String> getIndicators() {
+		return indicators;
+	}
+
+	public void setIndicators(List<String> indicators) {
+		this.indicators = indicators;
+	}
+
 	public List<String> getValues() {
 		return values;
 	}
@@ -114,13 +107,23 @@ public class ExaminationResultController {
 	
 	public String retrieveExamination() {
 		this.examination = examinationFacade.findByPrimaryKey(examinationId);
+		
+		// results already compiled
+		if(!examination.getResults().isEmpty()) return "error";
+		
 		if(this.examination != null) {
 			this.indicators = examination.getExaminationType().getIndicators();
+			this.values = new ArrayList<>();
+			for (int i = 0; i < this.indicators.size(); i++) {
+			    values.add(": ");
+			}
 			this.examinationType = examination.getExaminationType();
 			return "newResults";
 		}
 		else return "error";
 	}
+
+
 
 }
 

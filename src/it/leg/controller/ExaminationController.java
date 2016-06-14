@@ -34,33 +34,32 @@ public class ExaminationController {
 	
 	private String doctorSurname;
 	private String examinationTypeName;
+	private String patientEmail;
 	private String patientName;
 	
 	private Examination examination;
 	private Doctor doctor;
 	private Patient patient;
 	private ExaminationType examinationType;
+	private List<Examination> allExamination;
 	private List<Examination> patientExamination;
 	
 	public String createExamination() {
 		
 		doctor = doctorFacade.findBySurname(doctorSurname);
-		patient = patientFacade.findByName(patientName);
+		if(doctor == null) return "error";
+		patient = patientFacade.findByEmail(patientEmail);
+		if(patient == null) return "error";
 		examinationType = examinationTypeFacade.findByName(examinationTypeName);
+		if(examinationType == null) return "error";
 		examination = new Examination(examinationType, patient, doctor);
 		examinationFacade.createExamination(examination);
 		
+		// reset some fields
+		this.doctorSurname = null;
+		this.patientEmail = null;
+		this.examinationTypeName = null;
 		return "administrationArea";
-	}
-
-	public String showpatientExamination() {
-		Long id = patientFacade.getIdByname(patientName);	
-		if (id != null) {
-			this.patientExamination = this.examinationFacade.findAllbyId(id);
-			return "examinationPatientList";
-		}
-		
-		return "error";
 	}
 
 	public ExaminationType getExaminationType() {
@@ -111,12 +110,12 @@ public class ExaminationController {
 		this.examinationTypeName = examinationTypeName;
 	}
 
-	public String getPatientName() {
-		return patientName;
+	public String getPatientEmail() {
+		return patientEmail;
 	}
 
-	public void setPatientName(String patientName) {
-		this.patientName = patientName;
+	public void setPatientEmail(String patientEmail) {
+		this.patientEmail = patientEmail;
 	}
 
 	public List<Examination> getPatientExamination() {
@@ -126,5 +125,42 @@ public class ExaminationController {
 	public void setPatientExamination(List<Examination> patientExamination) {
 		this.patientExamination = patientExamination;
 	}
+	
+
+	public List<Examination> getAllExamination() {
+		return allExamination;
+	}
+
+	public void setAllExamination(List<Examination> allExamination) {
+		this.allExamination = allExamination;
+	}
+	
+
+	public String getPatientName() {
+		return patientName;
+	}
+
+	public void setPatientName(String patientName) {
+		this.patientName = patientName;
+	}
+	
+	// other useful methods
+	
+	public String examinationChoosing() {
+		this.allExamination = this.examinationFacade.findAll();
+		return "newFilling";
+	}
+	
+	public String showpatientExamination() {
+		Long id = patientFacade.getIdByname(patientName);	
+		if (id != null) {
+			this.patientExamination = this.examinationFacade.findAllbyId(id);
+			return "examinationPatientList";
+		}
+		
+		return "error";
+	}
+
+
 	
 }

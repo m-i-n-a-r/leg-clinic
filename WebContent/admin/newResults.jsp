@@ -37,23 +37,39 @@
       						<f:facet name="header"><h:outputText value="Medico"/></f:facet> 
       						<h:outputText value="#{examination.doctor.name} #{examination.doctor.surname}" />
    						</h:column>
+					</h:dataTable>
+				</div>
+				
+				<font color = green> Completa i valori con gli indicatori di riferimento:
+				<br><br>
+				<div align="center">
+			   		<h:dataTable binding="#{table1}" value="#{ExaminationResultController.indicators}" var="row">
+					    <h:column>
+					    	<f:facet name="header"><h:outputText value="Indicatori"/></f:facet>  
+    					    <h:inputText value="#{ExaminationResultController.indicators[table1.rowIndex]}" />
+    					    
+ 					   </h:column>
+					</h:dataTable> 		
+ 		
+ 					<h:dataTable binding="#{table2}" value="#{ExaminationResultController.values}" var="row">
+ 					   <h:column>
+					    	<f:facet name="header"><h:outputText value="Valori"/></f:facet>  
+    					    <h:inputText value="#{ExaminationResultController.values[table2.rowIndex]}" required="true"
+    					     requiredMessage="valori obbligatori" id="value">
+    					     <f:validateLength minimum="3" maximum="40"/> </h:inputText>
+    					     <strong> <h:message for="value" style="color:red"/> </strong>
+ 					   </h:column>
    					</h:dataTable>
 				</div>
-
-
-				<div>Inserisci i valori, separati da una virgola nello stesso ordine degli indicatori: <h:inputText value = "#{ExaminationResultController.value}" required="true"
-                 	requiredMessage="valori obbligatori" id="value"/> <h:message for="value" />
-				</div>
-				<br><br>
 				<div><h:commandButton value="Completa compilazione" action="#{ExaminationResultController.insertExaminationResult}"/></div>
-			
+				</font>
 			</h:form>
 			</f:view>
 				
 		</header>
 		</div>
 	<center>
-		<h2><a href="newFilling.jsp">Torna alla scelta dell'esame</a></h2>
+		<a href="newFilling.jsp">Torna alla scelta dell'esame</a>
 		<h2><a href="administrationArea.jsp">Torna all'area amministrativa</a></h2>
 	</center>
 </body>

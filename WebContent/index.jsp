@@ -55,15 +55,6 @@
 						</div>
 					</section>
 				</div>
-
-				<footer class="major container 75%">
-					<h3>Qui non so cosa metterci ma per ora lo teniamo</h3>
-					<p>lo sapevi che se clicchi il bottone sotto non succede assolutamente una fava? :D</p>
-					<ul class="actions">
-						<li><a href="" class="button">bottone stupido</a></li>
-					</ul>
-				</footer>
-
 			</div>
 
 			<div id="footer">
@@ -80,7 +71,7 @@
 						<li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
 						<li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
 						<li><a href="#" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
-						<li><a href="#" class="icon fa-github"><span class="label">Github</span></a></li>
+						<li><a href="https://github.com/m-i-n-a-r/LegClinic" class="icon fa-github"><span class="label">Github</span></a></li>
 						<li><a href="#" class="icon fa-envelope"><span class="label">Email</span></a></li>
 					</ul>
 

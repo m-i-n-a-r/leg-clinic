@@ -23,17 +23,20 @@
 				
 				<div align="center">
 					Nome Tipologia: <h:inputText value="#{ExaminationController.examinationTypeName}" required="true"
-					requiredMessage="Nome Tipologia Esame obbligatorio!" id="examName"/> <h:message for="examName" />
+					requiredMessage="Nome Tipologia Esame obbligatorio!" id="examName"/> 
+					<strong><h:message for="examName" style="color:red"/></strong>
 				</div>
 				
 				<div align="center">
-					Nome Paziente: <h:inputText value="#{ExaminationController.patientName}" required="true"
-					requiredMessage="Specificare un paziente" id="patientName"/> <h:message for="patientName" />
+					Email Paziente: <h:inputText value="#{ExaminationController.patientEmail}" required="true"
+					requiredMessage="Specificare una mail valida" id="patientEmail"/> 
+					<strong><h:message for="patientEmail" style="color:red"/></strong>
 				</div>
 				
 				<div align="center">
 					Cognome Medico: <h:inputText value="#{ExaminationController.doctorSurname}" required="true"
-					requiredMessage="E' richiesto il cognome del medico" id="doctorSurname"/> <h:message for="doctorSurname" />
+					requiredMessage="E' richiesto il cognome del medico" id="doctorSurname"/> 
+					<strong><h:message for="doctorSurname" style="color:red"/></strong>
 				</div>
 				<br><br>
 				<div align="center">

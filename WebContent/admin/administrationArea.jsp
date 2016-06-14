@@ -33,16 +33,18 @@
 	<br>
 	<center>
 		
+		<f:view>
+			<h:form>
+		
 		<a href="../faces/admin/newExaminationType.jsp">Amplia offerta</a><br>
 		<a href="../faces/admin/newExamination.jsp">Nuova prenotazione esame</a><br>
-		<a href="../faces/admin/newFilling.jsp">Inserisci risultati esame</a><br>
+		<div><h:commandLink value="Inserisci risultati esame" action="#{ExaminationController.examinationChoosing}"/></div>
 		<a href="../faces/admin/searchDoctor.jsp">Cerca esami per medico</a><br>
 		<a href="../faces/admin/newPatient.jsp">Nuovo paziente</a><br>
 		<a href="../faces/admin/newDoctor.jsp">Nuovo medico</a><br>
 		<a href="../faces/admin/newAdmin.jsp">Nuovo admin</a><br>
-		<f:view>
-			<h:form>
-				<h:commandLink value = "Lista Esami per Medico" action="#{DoctorController.takeDoctorList}"></h:commandLink>
+		<h:commandLink value = "Lista Esami per Medico" action="#{DoctorController.takeDoctorList}"></h:commandLink>
+
 			</h:form>
 		</f:view>
 		

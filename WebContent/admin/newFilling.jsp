@@ -18,8 +18,28 @@
 			</h1><br>
 			<f:view>
 			<h:form>
+				<div align="center">
+					<h:dataTable value="#{ExaminationController.allExamination}" var="examination">
+   						<h:column> 
+   							<f:facet name="header"><h:outputText value="Codice"/></f:facet>   					  				
+      						<h:outputText value="#{examination.id}"/>
+   						</h:column>
+   						<h:column> 				
+      						<f:facet name="header"><h:outputText value="Paziente"/></f:facet>   				
+      						<h:outputText value="#{examination.patient.name} #{examination.patient.surname}"/>
+   						</h:column>
+   						<h:column> 				
+      						<f:facet name="header"><h:outputText value="Tipologia"/></f:facet>    				
+      						<h:outputText value="#{examination.examinationType.name}"/>
+   						</h:column>
+   						<h:column>
+      						<f:facet name="header"><h:outputText value="Medico"/></f:facet> 
+      						<h:outputText value="#{examination.doctor.name} #{examination.doctor.surname}" />
+   						</h:column>
+					</h:dataTable>
+				</div>
 			
-				<div>Id esame: <h:inputText value = "#{ExaminationResultController.examinationId}" required="true"
+				<div>inserisci Id esame: <h:inputText value = "#{ExaminationResultController.examinationId}" required="true"
                  	requiredMessage="id obbligatorio" id="id"/> <h:message for="id" />
 				</div>
 

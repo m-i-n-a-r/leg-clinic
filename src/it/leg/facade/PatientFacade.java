@@ -52,6 +52,7 @@ public class PatientFacade {
 			return patient;
 		}
 	}
+	
 	public Long getIdByname(String name) {
 	    Query query = em.createQuery("SELECT OBJECT(p) FROM Patient AS p WHERE p.name=?1");
 	    query.setParameter(1, name);

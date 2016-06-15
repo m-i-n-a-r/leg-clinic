@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-<%@ page import="it.leg.model.Doctor"%>
+<%@ page import="it.leg.model.Patient"%>
 <%@ taglib prefix="f"  uri="http://java.sun.com/jsf/core"%>
 <%@ taglib prefix="h"  uri="http://java.sun.com/jsf/html"%>
 <%@ page import="it.leg.model.Patient"%>
@@ -25,6 +25,7 @@
 				<h:form>
 					<b>Email: </b><h:outputText value="#{LoginController.email}" />
 					<div><h:commandLink value="Visualizza esami prenotati" action="#{ExaminationController.displayExamination}"/></div>
+					<div><h:commandLink value="Consulta offerta" action="#{ExaminationTypeController.displayExaminationType}"/></div>
 				</h:form>
 			</f:view>
 		</center>
@@ -33,8 +34,6 @@
 	</div>
 	<br>
 	<center>
-		<a href="../faces/examinationTypeList.jsp">Consulta offerta</a>
-		
 		<br>
 		<h2><a href="../faces/login.jsp">Log out</a></h2>
 	</center>

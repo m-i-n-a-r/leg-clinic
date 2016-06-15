@@ -77,9 +77,11 @@ public class DoctorController {
 		return this.doctors;
 	}
 	
+	// other useful methods
+	
 	public String takeDoctorList() {
 		this.doctors = this.facade.findAll();
 		
-		return "DoctorExaminationsList";
+		return "doctorExaminationsList";
 	}
 }

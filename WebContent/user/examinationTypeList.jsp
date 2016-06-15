@@ -7,7 +7,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="stylesheet" href="assets/css/main.css" />
+<link rel="stylesheet" href="../assets/css/main.css" />
 <title>Esami disponibili - LegClinic</title>
 </head>
 <body>
@@ -36,6 +36,6 @@
 			</f:view>
 		</header>
 	</div>
-	<h1><a href="index.jsp">Torna alla Homepage</a></h1>
+	<h1><a href="personalArea.jsp">Torna all'area personale</a></h1>
 </body>
 </html>

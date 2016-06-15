@@ -39,7 +39,6 @@
 		<a href="../faces/admin/newExaminationType.jsp">Amplia offerta</a><br>
 		<a href="../faces/admin/newExamination.jsp">Nuova prenotazione esame</a><br>
 		<div><h:commandLink value="Inserisci risultati esame" action="#{ExaminationController.examinationChoosing}"/></div>
-		<a href="../faces/admin/searchDoctor.jsp">Cerca esami per medico</a><br>
 		<a href="../faces/admin/newPatient.jsp">Nuovo paziente</a><br>
 		<a href="../faces/admin/newDoctor.jsp">Nuovo medico</a><br>
 		<a href="../faces/admin/newAdmin.jsp">Nuovo admin</a><br>

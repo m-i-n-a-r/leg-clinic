@@ -59,23 +59,6 @@ public class ExaminationTypeController {
 		return "administrationArea";
 	
 	}
-	
-   public String addCondition() {
-		this.examinationType = examinationTypeFacade.findByPrimaryKey(examinationTypeId);
-		
-		
-		if(examinationType.getPreconditions().isEmpty()) return "error";
-		
-		if(this.examinationType != null) {
-			this.conditions = examinationType.getPreconditions();
-			this.condition=conditionFacade.createCondition(conditionName,conditionDescr);
-			this.conditions=examinationTypeFacade.addCondition(examinationType,condition);
-			
-			
-			return "administrationArea";
-		}
-		else return "error";
-	}
    
 
 	public String getIndicatorNames() {
@@ -194,5 +177,30 @@ public class ExaminationTypeController {
 
 	public void setExaminationTypeId(Long examinationTypeId) {
 		this.examinationTypeId = examinationTypeId;
+	}
+
+	// other useful methods
+	
+	public String displayExaminationType() {
+		this.examinationTypeList = examinationTypeFacade.findAll();
+		if(this.examinationTypeList == null || this.examinationTypeList.isEmpty()) return "error";
+		return "examinationTypeList";
+	}
+
+	public String addCondition() {
+		this.examinationType = examinationTypeFacade.findByPrimaryKey(examinationTypeId);
+		
+		
+		if(examinationType.getPreconditions().isEmpty()) return "error";
+		
+		if(this.examinationType != null) {
+			this.conditions = examinationType.getPreconditions();
+			this.condition=conditionFacade.createCondition(conditionName,conditionDescr);
+			this.conditions=examinationTypeFacade.addCondition(examinationType,condition);
+			
+			
+			return "administrationArea";
+		}
+		else return "error";
 	}
 }

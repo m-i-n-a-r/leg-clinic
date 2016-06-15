@@ -27,8 +27,7 @@
 							<li><h:outputText value="#{medico.name} #{medico.surname}"></h:outputText></li>
 						</c:forEach>
 					</ul>
-				<div align="center">
-				
+				</div>
 				<div>Cognome: <h:inputText value = "#{DoctorExamsListController.surname}" required="true"
                  	requiredMessage="Cognome obbligatorio" id="surname"/> <h:message for="surname" />
 				</div>	

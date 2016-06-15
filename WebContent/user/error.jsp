@@ -8,18 +8,16 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="stylesheet" href="../assets/css/main.css" />
-<title>Area Amministrativa</title>
+<title>Area Personale</title>
 </head>
 <body>
 
 	<div id="wrap">
 	<header class="major container 75%">
-		<h1>Errore nell'inserimento o nel caricamento di dati!</h1><br>
-		<font color = "blue">Se stavi inserendo dei risultati, ricorda che è possibile inserirli una sola volta,
-		per ragioni di sicurezza! </font>
+		<h1>Errore nell'inserimento o nel caricamento di dati!</h1>
 		</header>
 		
-	<h1><a href="administrationArea.jsp">Torna all'area amministrativa</a></h1>
+	<h1><a href="personalArea.jsp">Torna all'area personale</a></h1>
 	</div>
 </body>
 

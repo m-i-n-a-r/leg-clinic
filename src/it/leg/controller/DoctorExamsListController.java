@@ -33,7 +33,7 @@ public class DoctorExamsListController {
 			this.doctor = doctorFacade.findBySurname(this.surname);
 			this.setExaminations(this.doctor.getExaminations());
 			
-			return "DoctorExamsList";
+			return "doctorExamsList";
 		}
 		
 		return "error";

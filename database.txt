@@ -1,0 +1,418 @@
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 9.5.1
+-- Dumped by pg_dump version 9.5.1
+
+-- Started on 2016-06-15 18:05:14
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SET check_function_bodies = false;
+SET client_min_messages = warning;
+SET row_security = off;
+
+--
+-- TOC entry 1 (class 3079 OID 12355)
+-- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: 
+--
+
+CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
+
+
+--
+-- TOC entry 2164 (class 0 OID 0)
+-- Dependencies: 1
+-- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: 
+--
+
+COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
+
+
+SET search_path = public, pg_catalog;
+
+SET default_tablespace = '';
+
+SET default_with_oids = false;
+
+--
+-- TOC entry 182 (class 1259 OID 51310)
+-- Name: admin; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE admin (
+    id bigint NOT NULL,
+    email character varying(255),
+    name character varying(255) NOT NULL,
+    password character varying(255) NOT NULL,
+    surname character varying(255) NOT NULL
+);
+
+
+ALTER TABLE admin OWNER TO postgres;
+
+--
+-- TOC entry 183 (class 1259 OID 51318)
+-- Name: condition; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE condition (
+    name character varying(255) NOT NULL,
+    description character varying(255),
+    examinationtype_id bigint
+);
+
+
+ALTER TABLE condition OWNER TO postgres;
+
+--
+-- TOC entry 184 (class 1259 OID 51326)
+-- Name: doctor; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE doctor (
+    id bigint NOT NULL,
+    name character varying(255) NOT NULL,
+    specialization character varying(255) NOT NULL,
+    surname character varying(255) NOT NULL
+);
+
+
+ALTER TABLE doctor OWNER TO postgres;
+
+--
+-- TOC entry 185 (class 1259 OID 51334)
+-- Name: examination; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE examination (
+    id bigint NOT NULL,
+    examinationdate timestamp without time zone,
+    reservationdate timestamp without time zone,
+    doctor_id bigint,
+    patient_id bigint,
+    type_id bigint
+);
+
+
+ALTER TABLE examination OWNER TO postgres;
+
+--
+-- TOC entry 186 (class 1259 OID 51339)
+-- Name: examinationtype; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE examinationtype (
+    id bigint NOT NULL,
+    cost real NOT NULL,
+    description character varying(255) NOT NULL,
+    name character varying(255) NOT NULL
+);
+
+
+ALTER TABLE examinationtype OWNER TO postgres;
+
+--
+-- TOC entry 181 (class 1259 OID 51308)
+-- Name: hibernate_sequence; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE hibernate_sequence
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE hibernate_sequence OWNER TO postgres;
+
+--
+-- TOC entry 187 (class 1259 OID 51347)
+-- Name: indicator; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE indicator (
+    examinationtype_id bigint NOT NULL,
+    name character varying(255) NOT NULL
+);
+
+
+ALTER TABLE indicator OWNER TO postgres;
+
+--
+-- TOC entry 188 (class 1259 OID 51350)
+-- Name: patient; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE patient (
+    id bigint NOT NULL,
+    email character varying(255) NOT NULL,
+    name character varying(255) NOT NULL,
+    password character varying(255) NOT NULL,
+    surname character varying(255) NOT NULL
+);
+
+
+ALTER TABLE patient OWNER TO postgres;
+
+--
+-- TOC entry 189 (class 1259 OID 51358)
+-- Name: result; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE result (
+    examination_id bigint NOT NULL,
+    name character varying(255) NOT NULL
+);
+
+
+ALTER TABLE result OWNER TO postgres;
+
+--
+-- TOC entry 2149 (class 0 OID 51310)
+-- Dependencies: 182
+-- Data for Name: admin; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY admin (id, email, name, password, surname) FROM stdin;
+1	admin@admin.admin	admin	21232f297a57a5a743894a0e4a801fc3	admin
+\.
+
+
+--
+-- TOC entry 2150 (class 0 OID 51318)
+-- Dependencies: 183
+-- Data for Name: condition; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY condition (name, description, examinationtype_id) FROM stdin;
+Ossa	Il paziente deve avere le ossa	3
+Digiuno	Digiuno almeno per 6 ore	4
+\.
+
+
+--
+-- TOC entry 2151 (class 0 OID 51326)
+-- Dependencies: 184
+-- Data for Name: doctor; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY doctor (id, name, specialization, surname) FROM stdin;
+6	Gianluca	Odontoiatria	Conti
+7	Letizia	Osteopatia	Felletti
+8	Edoardo	Analisi del Sangue	Annesi
+\.
+
+
+--
+-- TOC entry 2152 (class 0 OID 51334)
+-- Dependencies: 185
+-- Data for Name: examination; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY examination (id, examinationdate, reservationdate, doctor_id, patient_id, type_id) FROM stdin;
+10	2016-06-16 10:00:00	2016-06-15 18:01:58	7	2	3
+11	2016-06-17 10:00:00	2016-06-15 18:02:14	8	5	4
+\.
+
+
+--
+-- TOC entry 2153 (class 0 OID 51339)
+-- Dependencies: 186
+-- Data for Name: examinationtype; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY examinationtype (id, cost, description, name) FROM stdin;
+3	10	Visita Osteopatica Standard	Osteopatia
+4	10	Analisi del sangue standard	Analisi del Sangue
+\.
+
+
+--
+-- TOC entry 2165 (class 0 OID 0)
+-- Dependencies: 181
+-- Name: hibernate_sequence; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('hibernate_sequence', 11, true);
+
+
+--
+-- TOC entry 2154 (class 0 OID 51347)
+-- Dependencies: 187
+-- Data for Name: indicator; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY indicator (examinationtype_id, name) FROM stdin;
+3	Calcio
+3	Deformazioni
+4	GlobuliRossi
+4	GlobuliBianchi
+\.
+
+
+--
+-- TOC entry 2155 (class 0 OID 51350)
+-- Dependencies: 188
+-- Data for Name: patient; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY patient (id, email, name, password, surname) FROM stdin;
+2	paziente@paziente.paziente	NomePaziente	628d59bd19502cb724c154abc05286df	CognomePaziente
+5	pinco@pallino.it	Pinco	5f4dcc3b5aa765d61d8327deb882cf99	Pallino
+\.
+
+
+--
+-- TOC entry 2156 (class 0 OID 51358)
+-- Dependencies: 189
+-- Data for Name: result; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY result (examination_id, name) FROM stdin;
+10	Calcio: Nella norma
+10	Deformazioni: Nessuna
+11	GlobuliRossi: Nella norma
+11	GlobuliBianchi: Nella norma
+\.
+
+
+--
+-- TOC entry 2015 (class 2606 OID 51317)
+-- Name: admin_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY admin
+    ADD CONSTRAINT admin_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2019 (class 2606 OID 51325)
+-- Name: condition_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY condition
+    ADD CONSTRAINT condition_pkey PRIMARY KEY (name);
+
+
+--
+-- TOC entry 2021 (class 2606 OID 51333)
+-- Name: doctor_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY doctor
+    ADD CONSTRAINT doctor_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2023 (class 2606 OID 51338)
+-- Name: examination_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY examination
+    ADD CONSTRAINT examination_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2025 (class 2606 OID 51346)
+-- Name: examinationtype_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY examinationtype
+    ADD CONSTRAINT examinationtype_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2027 (class 2606 OID 51357)
+-- Name: patient_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY patient
+    ADD CONSTRAINT patient_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2017 (class 2606 OID 51362)
+-- Name: uk_jl20d0ecx48g7qwy1dxe2akre; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY admin
+    ADD CONSTRAINT uk_jl20d0ecx48g7qwy1dxe2akre UNIQUE (email);
+
+
+--
+-- TOC entry 2030 (class 2606 OID 51373)
+-- Name: fk289jp2fmfewdf2qoxiqgopwie; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY examination
+    ADD CONSTRAINT fk289jp2fmfewdf2qoxiqgopwie FOREIGN KEY (patient_id) REFERENCES patient(id);
+
+
+--
+-- TOC entry 2028 (class 2606 OID 51363)
+-- Name: fkhl0xj0bk5jvq3khrrj49v9q6v; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY condition
+    ADD CONSTRAINT fkhl0xj0bk5jvq3khrrj49v9q6v FOREIGN KEY (examinationtype_id) REFERENCES examinationtype(id);
+
+
+--
+-- TOC entry 2031 (class 2606 OID 51378)
+-- Name: fkjygl7mpdsvnsl3jcf1p6vydo7; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY examination
+    ADD CONSTRAINT fkjygl7mpdsvnsl3jcf1p6vydo7 FOREIGN KEY (type_id) REFERENCES examinationtype(id);
+
+
+--
+-- TOC entry 2033 (class 2606 OID 51388)
+-- Name: fkkti2xk5nmekn97jba7fqes7o0; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY result
+    ADD CONSTRAINT fkkti2xk5nmekn97jba7fqes7o0 FOREIGN KEY (examination_id) REFERENCES examination(id);
+
+
+--
+-- TOC entry 2029 (class 2606 OID 51368)
+-- Name: fklkinckgy79f6piksf5a8hjca5; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY examination
+    ADD CONSTRAINT fklkinckgy79f6piksf5a8hjca5 FOREIGN KEY (doctor_id) REFERENCES doctor(id);
+
+
+--
+-- TOC entry 2032 (class 2606 OID 51383)
+-- Name: fkt017ga50p72kffad8gbyatje2; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY indicator
+    ADD CONSTRAINT fkt017ga50p72kffad8gbyatje2 FOREIGN KEY (examinationtype_id) REFERENCES examinationtype(id);
+
+
+--
+-- TOC entry 2163 (class 0 OID 0)
+-- Dependencies: 6
+-- Name: public; Type: ACL; Schema: -; Owner: postgres
+--
+
+REVOKE ALL ON SCHEMA public FROM PUBLIC;
+REVOKE ALL ON SCHEMA public FROM postgres;
+GRANT ALL ON SCHEMA public TO postgres;
+GRANT ALL ON SCHEMA public TO PUBLIC;
+
+
+-- Completed on 2016-06-15 18:05:14
+
+--
+-- PostgreSQL database dump complete
+--
+

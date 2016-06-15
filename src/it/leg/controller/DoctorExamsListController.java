@@ -26,12 +26,12 @@ public class DoctorExamsListController {
 	private String surname;
 
 	private Doctor doctor;
-	private List<Examination> exams;
+	private List<Examination> examinations;
 	
 	public String showExams() {
 		if (this.exists(this.surname)) {
-			this.setDoctor(doctorFacade.findBySurname(this.surname));
-			this.setExaminations(this.examinationFacade.findAllExamsByDoctor(this.doctor));
+			this.doctor = doctorFacade.findBySurname(this.surname);
+			this.setExaminations(this.doctor.getExaminations());
 			
 			return "DoctorExamsList";
 		}
@@ -48,11 +48,11 @@ public class DoctorExamsListController {
 	}
 	
 	public List<Examination> getExaminations() {
-		return this.exams;
+		return this.examinations;
 	}
 	
 	public void setExaminations(List<Examination> exams) {
-		this.exams = exams;
+		this.examinations = exams;
 	}
 	
 	public Doctor getDoctor() {

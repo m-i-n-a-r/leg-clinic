@@ -17,12 +17,27 @@
 	<header class="major container 75%">
 	    <f:view>
 		    <h:form>
-		    	Esami del dottore <h:outputText value="#{DoctorExamsListController.surname}"></h:outputText>
-				<c:forEach var="esame" items="#{DoctorExamsListController.exams}">
-					<div align="center">
-			     		<h:outputText value="#{esame.examinationDate}"/>
-					</div>
-				</c:forEach>
+				<div align="center">
+					Esami del Dr. <h:outputText value="#{DoctorExamsListController.doctor.surname}"></h:outputText>
+					<h:dataTable value="#{DoctorExamsListController.examinations}" var="examination">
+   						<h:column> 
+   							<f:facet name="header"><h:outputText value="Codice"/></f:facet>   					  				
+      						<h:outputText value="#{examination.id}"/>
+   						</h:column>
+   						<h:column> 				
+      						<f:facet name="header"><h:outputText value="Tipologia"/></f:facet>    				
+      						<h:outputText value="#{examination.examinationType.name}"/>
+   						</h:column>
+   						<h:column>
+      						<f:facet name="header"><h:outputText value="Paziente"/></f:facet> 
+      						<h:outputText value="#{examination.patient.name} #{examination.patient.surname}" />
+   						</h:column>
+      						<h:column>
+      						<f:facet name="header"><h:outputText value="Orario"/></f:facet> 
+      						<h:outputText value="#{examination.reservationDate}" />
+   						</h:column>
+					</h:dataTable>
+				</div>
 			</h:form>
 		</f:view>
 				

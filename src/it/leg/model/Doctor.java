@@ -28,7 +28,7 @@ public class Doctor {
 	@Column(nullable = false)
 	private String specialization;
 	
-	@OneToMany (fetch = FetchType.LAZY)
+	@OneToMany (fetch = FetchType.EAGER)
 	@JoinColumn(name = "doctor_id") 
 	private List<Examination> examinations;
 	

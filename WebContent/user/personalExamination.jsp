@@ -34,9 +34,20 @@
    						</h:column>
 					</h:dataTable>
 				</div>
+				
+				<div align="center">
+					Inserisci codice per visualizzare i risultati di un esame: 
+					<h:inputText value="#{ExaminationController.examinationCode}" required="true"
+					requiredMessage="Specificare un codice valido" id="examinationCode"/> 
+					<strong><h:message for="examinationCode" style="color:red"/></strong>
+				</div>
+				
+				<br><br>
+				<div><h:commandButton value="Visualizza risultati"  action="#{ExaminationController.displayExaminationResult}"/></div>
+			
+				
 			</h:form>
 			</f:view>
-				<!-- TODO - insert code here to display examination results! -->
 		</header>
 		</div>
 	<center>

@@ -17,7 +17,7 @@
 		<class>it.leg.model.Admin</class>
 
 		<properties>
-			<property name="hibernate.hbm2ddl.auto" value="create" /> <!-- or update -->
+			<property name="hibernate.hbm2ddl.auto" value="update" /> <!-- or create -->
 		</properties>
 
 	</persistence-unit>

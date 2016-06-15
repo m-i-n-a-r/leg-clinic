@@ -1,7 +1,9 @@
 package it.leg.controller;
 
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
@@ -41,12 +43,14 @@ public class ExaminationController {
 	private String examinationTypeName;
 	private String patientEmail;
 	private String patientName;
+	private Long examinationCode;
 	
 	private Examination examination;
 	private Doctor doctor;
 	private Patient patient;
 	private ExaminationType examinationType;
 	private Date examinationDate;
+	private List<String> examinationResults;
 	private List<Examination> allExamination;
 	private List<Examination> patientExamination;
 	
@@ -170,6 +174,22 @@ public class ExaminationController {
 		this.loginController = loginController;
 	}
 	
+	public Long getExaminationCode() {
+		return examinationCode;
+	}
+
+	public void setExaminationCode(Long examinationCode) {
+		this.examinationCode = examinationCode;
+	}
+	
+	public List<String> getExaminationResults() {
+		return examinationResults;
+	}
+
+	public void setExaminationResults(List<String> examinationResults) {
+		this.examinationResults = examinationResults;
+	}
+
 	// other useful methods
 	
 	public String examinationChoosing() {
@@ -186,6 +206,25 @@ public class ExaminationController {
 		return "personalExamination";
 	}
 	
+	public String displayExaminationResult() {
+		this.examination = examinationFacade.findByPrimaryKey(examinationCode);
+		
+		// check results existence
+		if(this.examination == null) return "error";
+		if(this.examination.getResults() == null) return "error";
+		
+		examinationResults = this.examination.getResults();
+		
+		// remove duplicates
+		Set<String> tmp = new HashSet<>();
+		tmp.addAll(examinationResults);
+		examinationResults.clear();
+		examinationResults.addAll(tmp);
+		
+		return "personalResult";
+	}
+	
+	// TODO delete this method?
 	public String showpatientExamination() {
 		Long id = patientFacade.getIdByname(patientName);	
 		if (id != null) {
@@ -195,7 +234,6 @@ public class ExaminationController {
 		
 		return "error";
 	}
-
 
 }
 

@@ -24,6 +24,7 @@
 			<f:view>
 				<h:form>
 					<b>Email: </b><h:outputText value="#{LoginController.email}" />
+					<div><h:commandLink value="Visualizza esami prenotati" action="#{ExaminationController.displayExamination}"/></div>
 				</h:form>
 			</f:view>
 		</center>
@@ -33,7 +34,6 @@
 	<br>
 	<center>
 		<a href="../faces/examinationTypeList.jsp">Consulta offerta</a>
-		<a href="../faces/user/patientExamination.jsp">Consulta i tuoi esami</a>
 		
 		<br>
 		<h2><a href="../faces/login.jsp">Log out</a></h2>

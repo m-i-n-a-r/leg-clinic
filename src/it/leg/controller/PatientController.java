@@ -24,9 +24,10 @@ public class PatientController {
 	private String password;
 	
 	private Patient patient;
+	private LoginHelper helper = new LoginHelper();
 	
 	public String createPatient() {
-		this.patient = facade.createPatient(name, surname, email, password);
+		this.patient = facade.createPatient(name, surname, email, this.helper.md5(password));
 
 		return "administrationArea";
 	}

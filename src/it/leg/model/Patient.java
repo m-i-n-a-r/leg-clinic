@@ -31,7 +31,7 @@ public class Patient {
 	@Column(nullable = false)
 	private String password;
 	
-	@OneToMany(fetch = FetchType.LAZY) 
+	@OneToMany(fetch = FetchType.EAGER) 
 	@JoinColumn(name = "patient_id") 
 	private List<Examination> examinations;
 	
@@ -89,12 +89,6 @@ public class Patient {
 		this.examinations = examinations;
 	}
 	
-	// Useful methods
-	
-	public void addExamination(Examination examination) {
-		this.examinations.add(examination);
-	}
-
 	public Long getId() {
 		return id;
 	}
@@ -102,7 +96,11 @@ public class Patient {
 	public void setId(Long id) {
 		this.id = id;
 	}
-
 	
+	// Useful methods
+	
+	public void addExamination(Examination examination) {
+		this.examinations.add(examination);
+	}
 	
 }

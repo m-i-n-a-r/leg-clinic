@@ -24,9 +24,10 @@ public class AdminController {
 	private String password;
 	
 	private Admin admin;
+	private LoginHelper helper = new LoginHelper();;
 	
 	public String createAdmin() {
-		this.admin = facade.createAdmin(name, surname, email, password);
+		this.admin = facade.createAdmin(name, surname, email, this.helper.md5(password));
 
 		return "administrationArea";
 	}

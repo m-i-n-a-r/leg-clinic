@@ -1,9 +1,11 @@
 package it.leg.controller;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
 
 import it.leg.facade.DoctorFacade;
@@ -19,7 +21,10 @@ import it.leg.model.Patient;
 @ManagedBean (name = "ExaminationController")
 @SessionScoped
 public class ExaminationController {
-
+	
+	@ManagedProperty(value="#{LoginController}")
+	private LoginController loginController;
+	
 	@EJB(beanName = "ExaminationFacade")
 	private ExaminationFacade examinationFacade;
 	
@@ -41,6 +46,7 @@ public class ExaminationController {
 	private Doctor doctor;
 	private Patient patient;
 	private ExaminationType examinationType;
+	private Date examinationDate;
 	private List<Examination> allExamination;
 	private List<Examination> patientExamination;
 	
@@ -53,28 +59,18 @@ public class ExaminationController {
 		examinationType = examinationTypeFacade.findByName(examinationTypeName);
 		if(examinationType == null) return "error";
 		examination = new Examination(examinationType, patient, doctor);
+		if(examinationDate == null) return "error";
+		examination.setExaminationDate(examinationDate);
 		examinationFacade.createExamination(examination);
 		
 		// reset some fields
+		this.examinationDate = null;
 		this.doctorSurname = null;
 		this.patientEmail = null;
 		this.examinationTypeName = null;
 		return "administrationArea";
 	}
-	
-      public String showpatientExamination() {
-	    Long id = patientFacade.getIdByname(patientName);	
-		if (id != null) {
-			patientExamination = this.examinationFacade.findAllbyId(id);
-			return "examinationPatientList";
-		}
-		
-		return "error";
-	}
 
-	
-	
-	
 	public ExaminationType getExaminationType() {
 		return examinationType;
 	}
@@ -157,6 +153,23 @@ public class ExaminationController {
 		this.patientName = patientName;
 	}
 	
+	public Date getExaminationDate() {
+		return examinationDate;
+	}
+
+	public void setExaminationDate(Date examinationDate) {
+		this.examinationDate = examinationDate;
+	}
+
+
+	public LoginController getLoginController() {
+		return loginController;
+	}
+
+	public void setLoginController(LoginController loginController) {
+		this.loginController = loginController;
+	}
+	
 	// other useful methods
 	
 	public String examinationChoosing() {
@@ -164,8 +177,27 @@ public class ExaminationController {
 		return "newFilling";
 	}
 	
-	
+	public String displayExamination() {
+		this.patient = patientFacade.findByEmail(loginController.getEmail());
+		if(this.patient == null) return "error";
+		this.patientExamination = this.patient.getExaminations();
+		if(this.patientExamination == null) return "error";
+		if(this.patientExamination.isEmpty()) return "error";
+		return "personalExamination";
 	}
+	
+	public String showpatientExamination() {
+		Long id = patientFacade.getIdByname(patientName);	
+		if (id != null) {
+			this.patientExamination = this.examinationFacade.findAllbyId(id);
+			return "examinationPatientList";
+		}
+		
+		return "error";
+	}
+
+
+}
 
 
 	

@@ -38,6 +38,15 @@
 					requiredMessage="E' richiesto il cognome del medico" id="doctorSurname"/> 
 					<strong><h:message for="doctorSurname" style="color:red"/></strong>
 				</div>
+
+				<div align="center">
+					Data dell'appuntamento prefissata (Formato gg-MM-aaaa OO:mm):
+					<h:inputText value="#{ExaminationController.examinationDate}">  
+   					<f:convertDateTime pattern="dd-MM-yyyy HH:mm" timeZone="Europe/Rome"/>  
+   					
+				</h:inputText>
+				</div>
+				
 				<br><br>
 				<div align="center">
 					<h:commandButton value="Crea prenotazione" action="#{ExaminationController.createExamination}"/>

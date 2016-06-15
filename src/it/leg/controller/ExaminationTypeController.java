@@ -48,7 +48,12 @@ public class ExaminationTypeController {
 		examinationTypeFacade.createExaminationType(this.examinationType);
 
 		// resets some fields
-		this.indicatorNames = "";
+		this.indicatorNames = null;
+		this.conditionName = null;
+		this.conditionDescr = null;
+		this.cost = null;
+		this.description = null;
+		this.name = null;
 		return "administrationArea";
 	
 	}

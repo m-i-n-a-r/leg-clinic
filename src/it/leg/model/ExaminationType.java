@@ -34,7 +34,7 @@ public class ExaminationType {
 	@Column(name="name", nullable = false)
 	private List<String> indicators;
 	
-	@OneToMany(fetch = FetchType.LAZY)
+	@OneToMany(fetch = FetchType.EAGER)
 	@JoinColumn(name ="examinationType_id")
 	public List<Condition> preconditions;
 	

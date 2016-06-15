@@ -224,16 +224,8 @@ public class ExaminationController {
 		return "personalResult";
 	}
 	
-	// TODO delete this method?
-	public String showpatientExamination() {
-		Long id = patientFacade.getIdByname(patientName);	
-		if (id != null) {
-			this.patientExamination = this.examinationFacade.findAllbyId(id);
-			return "examinationPatientList";
-		}
-		
-		return "error";
-	}
+	
+	
 
 }
 

@@ -1,5 +1,6 @@
 package it.leg.controller;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
@@ -36,6 +37,7 @@ public class ExaminationTypeController {
 	private List<ExaminationType> examinationTypeList;
 	private List<Condition> conditions;
 	private Condition condition;
+	private Long examinationTypeId;
 
 	public String createExaminationType() {
 		this.indicators = Arrays.asList(indicatorNames.split("\\s*,\\s*"));
@@ -57,6 +59,24 @@ public class ExaminationTypeController {
 		return "administrationArea";
 	
 	}
+	
+   public String addCondition() {
+		this.examinationType = examinationTypeFacade.findByPrimaryKey(examinationTypeId);
+		
+		
+		if(examinationType.getPreconditions().isEmpty()) return "error";
+		
+		if(this.examinationType != null) {
+			this.conditions = examinationType.getPreconditions();
+			this.condition=conditionFacade.createCondition(conditionName,conditionDescr);
+			this.conditions=examinationTypeFacade.addCondition(examinationType,condition);
+			
+			
+			return "administrationArea";
+		}
+		else return "error";
+	}
+   
 
 	public String getIndicatorNames() {
 		return this.indicatorNames;
@@ -166,5 +186,13 @@ public class ExaminationTypeController {
 	
 	public void setCondition(Condition condition) {
 		this.condition = condition;
+	}
+
+	public Long getExaminationTypeId() {
+		return examinationTypeId;
+	}
+
+	public void setExaminationTypeId(Long examinationTypeId) {
+		this.examinationTypeId = examinationTypeId;
 	}
 }

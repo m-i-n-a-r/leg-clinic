@@ -43,6 +43,7 @@
 		<a href="../faces/admin/newPatient.jsp">Nuovo paziente</a><br>
 		<a href="../faces/admin/newDoctor.jsp">Nuovo medico</a><br>
 		<a href="../faces/admin/newAdmin.jsp">Nuovo admin</a><br>
+		<a href="../faces/admin/newConditionForType.jsp">Nuovo Prerequisito Per Tipologia</a><br>
 		<h:commandLink value = "Lista Esami per Medico" action="#{DoctorController.takeDoctorList}"></h:commandLink>
 
 			</h:form>

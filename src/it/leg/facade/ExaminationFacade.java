@@ -51,14 +51,7 @@ public class ExaminationFacade {
 		return exams;
 	}
 	
-	public List<Examination> findAllbyId(Long id) {
-	    
-		Query query = em.createQuery("SELECT e FROM Examination AS e WHERE patient_id="+id);
-	    
-	   	    List<Examination> examinations = query.getResultList();
-	    
-	      return examinations;
-	    }
+	
 	
 }
 

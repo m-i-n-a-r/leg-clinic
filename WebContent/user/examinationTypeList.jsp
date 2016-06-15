@@ -13,22 +13,27 @@
 <body>
 	<h1 align="center">Qui puoi visalizzare la nostra offerta</h1>
 	<div id="main">
-	    <header class="major container 75%">
+	    <header class="major container 100%">
 			<f:view>
 			<h:form>
 				<div align="center">
 					<h:dataTable value="#{ExaminationTypeController.examinationTypeList}" var="examinationType">
-   						<h:column> 
-   							<f:facet name="header"><h:outputText value="Nome"/></f:facet>   					  				
-      						<h:outputText value="#{examinationType.name}"/>
-   						</h:column>
+
    						<h:column> 				
       						<f:facet name="header"><h:outputText value="Descrizione"/></f:facet>    				
       						<h:outputText value="#{examinationType.description}"/>
    						</h:column>
+   						<h:column> 
+   							<f:facet name="header"><h:outputText value="Nome"/></f:facet>   					  				
+      						<h:outputText value="#{examinationType.name}"/>
+   						</h:column>
    						<h:column>
       						<f:facet name="header"><h:outputText value="Prezzo in €"/></f:facet> 
       						<h:outputText value="#{examinationType.cost}"/>
+   						</h:column>
+   						<h:column>
+      						<f:facet name="header"><h:outputText value="Prerequisiti"/></f:facet> 
+      						<h:outputText value="#{examinationType.preconditions}"/>
    						</h:column>
 					</h:dataTable>
 				</div>

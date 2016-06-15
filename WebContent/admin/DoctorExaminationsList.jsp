@@ -31,6 +31,7 @@
 				<div>Cognome: <h:inputText value = "#{DoctorExamsListController.surname}" required="true"
                  	requiredMessage="Cognome obbligatorio" id="surname"/> <h:message for="surname" />
 				</div>	
+				<br><br>
 				<h:commandButton value="Mostra" action="#{DoctorExamsListController.showExams}"></h:commandButton>
 			</h:form>
 			</f:view>
